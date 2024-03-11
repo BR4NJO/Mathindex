@@ -1,6 +1,4 @@
 {
-<<<<<<< HEAD
-=======
     "doctrine/doctrine-bundle": {
         "version": "2.11",
         "recipe": {
@@ -40,7 +38,6 @@
             "./migrations/.gitignore"
         ]
     },
->>>>>>> 0e5c4db44f9c5d2e39931e866fef70854202fb76
     "symfony/console": {
         "version": "7.0",
         "recipe": {
@@ -84,8 +81,6 @@
             "./src/Kernel.php"
         ]
     },
-<<<<<<< HEAD
-=======
     "symfony/maker-bundle": {
         "version": "1.52",
         "recipe": {
@@ -95,7 +90,6 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
->>>>>>> 0e5c4db44f9c5d2e39931e866fef70854202fb76
     "symfony/routing": {
         "version": "7.0",
         "recipe": {
