@@ -1,0 +1,25 @@
+/* variable */
+:root{
+    --gray: #757575;
+    --white: #FFFF;
+    --title: #1B3168;
+    --green: #52B788;
+    --white-background: #EFF2F4;
+    --gray-form-password: #66666666;
+    --gray-light: #F6F6F6;
+    --gray-tag: #DBDBDB;
+    --gray-difficulty: #74828F;
+    --blue-button: #455884;
+    --blue-bouton-active: #1B3168;
+    --gray-modal: #4F4F4F;
+    --gray-modal-button: #F0F0F0;
+    --gray-modal-text: #54595E;
+    --modal-background: #D9D9D9B2;
+}
+
+/* responsive */
+*,::before,::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
