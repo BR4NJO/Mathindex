@@ -1,21 +1,21 @@
 /* variables */
 :root {
-    --white: #FFFFFF;
-    --white-background: #EFF2F4;
-    --blue-title: #1B3168;
-    --blue-button: #455884;
-    --blue-button-active: #1B3168;
-    --blue-file-icon: #03053D;
-    --green: #52B788;
+    --white: #000000;
+    --white-background: #110E0C;
+    --blue-title: #E4CE97;
+    --blue-button: #BBA87C;
+    --blue-button-active: #E4CE97;
+    --blue-file-icon: #FDFBC3;
+    --green: #AE4978;
     
-    --gray: #757575;
-    --gray-form-password: #666666;
-    --gray-light: #F6F6F6;
-    --gray-tag: #DBDBDB;
-    --gray-difficulty: #74828F;
+    --gray: #8B8B8B;
+    --gray-form-password: #9A9A9A;
+    --gray-light: #0A0A0A;
+    --gray-tag: #252525;
+    --gray-difficulty: #8C7E71;
     
-    --gray-modal: #4F4F4F;
-    --gray-modal-button: #F0F0F0;
-    --gray-modal-text: #54595E;
-    --gray-modal-background: #D9D9D9B2;
+    --gray-modal: #B1B1B1;
+    --gray-modal-button: #101010;
+    --gray-modal-text: #ACA7A2;
+    --gray-modal-background: #272727B2;
 }
