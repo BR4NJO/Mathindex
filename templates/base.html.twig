@@ -2,12 +2,13 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}{{info.site_titre}}{% endblock %}</title>
+        <title>{% block title %}MathIndex{% endblock %}</title>
         <meta name="description" content="MathIndex est une application web qui vous permet de consulter et publier des exercices mathématique de tout niveau et sur toute thématique.">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         
         <link rel="stylesheet" href="{{asset('font/font.css')}}"/>
         <link rel="stylesheet" href="{{asset('css/base.css')}}"/>
+        <link rel="stylesheet" href="{{asset('css/base-light.css')}}"/>
         {% block stylesheets %}{% endblock %}
 
         <script src="https://kit.fontawesome.com/f0917de996.js" crossorigin="anonymous"></script>
@@ -16,7 +17,9 @@
     </head>
 
     <body>
+        <div>Sidebar</div>
         {% block body %}{% endblock %}
+        <div>Footer</div>
     </body>
 
 </html>
