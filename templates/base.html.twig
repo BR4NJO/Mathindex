@@ -11,8 +11,7 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-    </body>
+      
 
         <!--========================SIDEBAR========================-->
 
@@ -49,15 +48,12 @@
                 </li>
             </nav>
          
+            {% block body %}
+
+
+            {% endblock %}
 
         </div>
 
-
-        
-
-        {% block body %}
-
-
-        {% endblock %}
     </body>
 </html>

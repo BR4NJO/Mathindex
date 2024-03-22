@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
 
-{{ component('Table', {'data': data, 'rendered': ['name', 'classroom', 'thematic', 'difficulty', 'duration', 'keywords', 'exercise_file'] }) }}
+{% block body %}
+
+        
+
+    {{ component('Table', {'data': data, 'rendered': ['name', 'classroom', 'thematic', 'difficulty', 'duration', 'keywords', 'exercise_file'] }) }}
 {% endblock %}
