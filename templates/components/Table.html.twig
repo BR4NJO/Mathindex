@@ -1,0 +1,23 @@
+<table>
+    <thead>
+    
+    </thead>
+
+    <tbody>
+        {% for obj in data %}
+        <tr>
+            {% for k, v in obj %}
+                {% if k != 'exercises' %}
+                <td>{{ k }} ; {{ v }}</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<style>
+    td {
+        border: 1px solid;
+    }
+</style>

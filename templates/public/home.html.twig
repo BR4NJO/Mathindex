@@ -3,5 +3,5 @@
 {% block body %}
 <h1 style="color: var(--blue-title);">Accueil</h1>
 
-<div>texte d'accueil</div>
+{{ component('Table', {'data': data }) }}
 {% endblock %}
