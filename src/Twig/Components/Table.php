@@ -7,4 +7,5 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 class Table
 {
     public array $data;
+    public array $rendered;
 }
