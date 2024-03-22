@@ -10,7 +10,8 @@
         'thematic': 'Thématique', 
         'difficulty': 'Difficulté',
         'duration' : 'Durée',
-        'keywords' : 'Mots clés'} %}
+        'keywords' : 'Mots clés',
+        'exercise_file': 'Fichiers'} %}
     <thead>
         {% for k, v in data[0] %}
             {% if k in rendered %}
@@ -44,6 +45,13 @@
                     {% for t in v|split(';') %}
                     <span>{{ t }}</span>
                     {% endfor %}
+                </td>
+                {% endif %}
+
+                {% if k == 'exercise_file' and k in rendered %}
+                <td>
+                    <a href={{ obj.exercise_file.name }}.{{ obj.exercise_file.extension }}>Exercice</a>
+                    <a href={{ obj.correction_file.name }}.{{ obj.correction_file.extension }}>Corrigé</a>
                 </td>
                 {% endif %}
             {% endfor %}
