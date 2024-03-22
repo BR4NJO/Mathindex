@@ -89,6 +89,18 @@ class File
 
     /* RELATIONS */
 
-    #[ORM\OneToOne(mappedBy: 'Exercise', targetEntity: Exercise::class, cascade: array("persist"))]
-    private Exercise $exercise;
+    #[ORM\OneToOne(mappedBy: 'exercise_file', targetEntity: Exercise::class, cascade: ["persist"])]
+    private ?Exercise $exercise = null;
+
+    public function getExercise(): ?Exercise
+    {
+        return $this->exercise;
+    }
+
+    public function setExercise(?Exercise $exercise): static
+    {
+        $this->exercise = $exercise;
+
+        return $this;
+    }
 }

@@ -1,0 +1,62 @@
+<link rel="stylesheet" href={{ asset('css/components/Table.css')}}>
+
+{% if data is empty %}
+<p>Tableau vide.</p>
+{% else %}
+<table>
+    {% set headnames = {
+        'name': 'Nom', 
+        'classroom': 'Niveau', 
+        'thematic': 'Thématique', 
+        'difficulty': 'Difficulté',
+        'duration' : 'Durée',
+        'keywords' : 'Mots clés',
+        'exercise_file': 'Fichiers'} %}
+    <thead>
+        {% for k, v in data[0] %}
+            {% if k in rendered %}
+            <td>{{ headnames[k] }}</td>
+            {% endif %}
+        {% endfor %}
+    </thead>
+
+    <tbody>
+        {% for obj in data %}
+        <tr>
+            {% for k, v in obj %}
+                {% if k in ['name', 'chapter'] and k in rendered %}
+                <td>{{ v }}</td>
+                {% endif %}
+
+                {% if k in ['classroom', 'thematic'] and k in rendered %}
+                <td>{{ v.getName() }}</td>
+                {% endif %}
+
+                {% if k =='difficulty' and k in rendered %}
+                <td>Niveau {{ v }}</td>
+                {% endif %}
+
+                {% if k =='duration' and k in rendered %}
+                <td>{{ v|round(0, 'floor') }}h{{ 60 * (v - v|round(0, 'floor')) }}</td>
+                {% endif %}
+
+                {% if k =='keywords' and k in rendered %}
+                <td>
+                    {% for t in v|split(';') %}
+                    <span>{{ t }}</span>
+                    {% endfor %}
+                </td>
+                {% endif %}
+
+                {% if k == 'exercise_file' and k in rendered %}
+                <td>
+                    <a href={{ obj.exercise_file.name }}.{{ obj.exercise_file.extension }}>Exercice</a>
+                    <a href={{ obj.correction_file.name }}.{{ obj.correction_file.extension }}>Corrigé</a>
+                </td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
