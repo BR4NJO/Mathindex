@@ -1,0 +1,48 @@
+//flex
+%flex{
+    display: flex;
+}
+
+%flex-align{
+    display: flex;
+    align-items: center;
+}
+
+%flex-around{
+    @extend %flex;
+    justify-content: space-around;
+}
+
+%flex-full-center{
+    @extend %flex-align;
+    align-items: center;
+    justify-content: center;
+}
+
+%flex-aling-around{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+%flex-beetween{
+    @extend %flex;
+    justify-content: space-between;
+}
+
+%flex-around-column{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+%flex-beetwen-column{
+    @extend %flex-beetween;
+    flex-direction: column;
+}
+
+// Liste
+%list{
+    list-style: none;
+    @extend %flex-align;
+}
