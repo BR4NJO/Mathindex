@@ -12,29 +12,87 @@ body{
     @extend %flex;
 }
 
+a,p,h1,h2,h3,path{
+    color: $gris;
+}
+
+a{
+    text-decoration: none;
+    color: $gris;
+}
+
 aside{
     width: 15%;
     list-style: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1% 0;
     box-shadow: 0px 3.125011682510376px 35.1563835144043px 0px #00000014;
     .container-saint-vincent{
+        height: 14%;
         @extend %flex-around;
+        align-items: center;
+        img{
+            width: 15%;
+        }
         ul{
             list-style: none;
         }
     }
     .container-option{
-        height: 20%;
-        @extend %flex-around-column;
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.container-link-aside{
+    height: 70%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    li{
+        cursor: pointer;
+        width: 90%;
+        margin: 0 auto;
+        height: 9%;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        svg{
+            margin-left: 5%;
+            height: 90%;
+        }
+        p{
+            margin-left: 5%; 
+        }
+    }
+    li:hover{
+        background-color: $blanc-de-fond;
+    }
+}
+
+#deconnexion{
+    height: 5%;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    background-color: $blanc-de-fond;
+    svg{
+        height: 60%;
+        margin-left: 5%;
+    }
+    a{
+        margin-left: 5%;
     }
 }
 
 .container-page{
     width: 85%;
-    height: 100%;
+    height: 90%;
     nav{
         height: 10%;
         @extend %list;
@@ -54,11 +112,37 @@ aside{
 }
 
 .content-page{
-    height: 90%;
+    height: 95%;
     width: 100%;
+    padding-top: 2%;
+    padding-left: 5%;
     background-color: $blanc-de-fond;
-    h2{
+    h1{
         color: $bleu-titre;
+        font-size: 1.5rem;
+        padding-bottom: 1%;
+    }
+    .content{
+        width: 95%;
+        height: 92%;
+        border-radius: 10px;
+        background-color: $blanc;
+    }
+}
+
+.footer{
+    height: 6%;
+    background-color: $blanc-de-fond;
+    div{
+        padding-top: 1%;
+        margin-left: 5%;
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        p,path{
+            color: $noir;
+        }
     }
 }
 
