@@ -1,0 +1,30 @@
+security:
+    password_hashers:
+        main:
+            algorithm: bcrypt
+            cost: 13
+
+    providers:
+        user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            lazy: true
+            provider: user_provider
+
+    access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
+
+when@dev:
+    security:
+        password_hashers:
+            main:
+                algorithm: bcrypt
+                cost: 4

@@ -3,12 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\ExerciseRepository;
-use Doctrine\ORM\Mapping as ORM;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-
-use App\Entity\Skill;
+use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ExerciseRepository::class)]
 class Exercise
@@ -21,17 +18,28 @@ class Exercise
     #[ORM\Column(length: 255)]
     private ?string $name = "Placeholder";
 
-    #[ORM\Column(length: 255)]
-    private ?string $chapter = "Placeholder";
+    #[ORM\ManyToOne(targetEntity: Classroom::class, inversedBy: 'exercises')]
+    private Classroom $classroom;
 
-    #[ORM\Column(length: 255)]
-    private ?string $keywords = "Placeholder";
+    #[ORM\ManyToOne(targetEntity: Thematic::class, inversedBy: 'exercises')]
+    private Thematic $thematic;
 
     #[ORM\Column]
     private ?int $difficulty = 0 ;
 
     #[ORM\Column]
     private ?float $duration = 0;
+
+    #[ORM\Column(length: 255)]
+    private ?string $keywords = "Placeholder";
+
+    #[ORM\OneToOne(targetEntity:File::class, inversedBy: 'exercise')]
+    private File $exercise_file;
+
+    #[ORM\OneToOne(targetEntity:File::class, inversedBy: 'exercise', cascade: array("persist"))]
+    private File $correction_file;
+
+    //
 
     #[ORM\Column(length: 255)]
     private ?string $proposed_by_type = "Placeholder";
@@ -48,16 +56,29 @@ class Exercise
     #[ORM\Column(length: 255)]
     private ?string $source_information = "Placeholder";
 
+    //
+
+    #[ORM\ManyToOne(targetEntity: Source::class, inversedBy: 'exercises')]
+    private Source $source;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'exercises')]
+    private User $user;
+
+    #[ORM\ManyToMany(inversedBy: 'exercises', targetEntity: Skill::class)]
+    private Collection $skills;
+
+    #[ORM\Column(length: 255)]
+    private ?string $chapter = null;
+
+    public function __construct()
+    {
+        $this->skills = new ArrayCollection();
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): static
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -68,32 +89,27 @@ class Exercise
     public function setName(string $name): static
     {
         $this->name = $name;
-
         return $this;
     }
 
-    public function getChapter(): ?string
+    public function getClassroom(): Classroom
     {
-        return $this->chapter;
+        return $this->classroom;
     }
 
-    public function setChapter(string $chapter): static
+    public function setClassroom(Classroom $classroom): void
     {
-        $this->chapter = $chapter;
-
-        return $this;
+        $this->classroom = $classroom;
     }
 
-    public function getKeywords(): ?string
+    public function getThematic(): Thematic
     {
-        return $this->keywords;
+        return $this->thematic;
     }
 
-    public function setKeywords(string $keywords): static
+    public function setThematic(Thematic $thematic): void
     {
-        $this->keywords = $keywords;
-
-        return $this;
+        $this->thematic = $thematic;
     }
 
     public function getDifficulty(): ?int
@@ -104,7 +120,6 @@ class Exercise
     public function setDifficulty(int $difficulty): static
     {
         $this->difficulty = $difficulty;
-
         return $this;
     }
 
@@ -116,8 +131,73 @@ class Exercise
     public function setDuration(float $duration): static
     {
         $this->duration = $duration;
-
         return $this;
+    }
+
+    public function getKeywords(): ?string
+    {
+        return $this->keywords;
+    }
+
+    public function setKeywords(string $keywords): static
+    {
+        $this->keywords = $keywords;
+        return $this;
+    }
+
+    public function getExerciseFile(): File
+    {
+        return $this->exercise_file;
+    }
+
+    public function setExerciseFile(File $exercise_file): void
+    {
+        $this->exercise_file = $exercise_file;
+    }
+
+    public function getCorrectionFile(): File
+    {
+        return $this->correction_file;
+    }
+
+    public function setCorrectionFile(File $correction_file): void
+    {
+        $this->correction_file = $correction_file;
+    }
+
+    public function getSource(): Source
+    {
+        return $this->source;
+    }
+
+    public function setSource(Source $source): void
+    {
+        $this->source = $source;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
+    }
+
+    public function addSkill(Skill $skill): void
+    {
+        $this->skills->add($skill);
+    }
+
+    public function getSkills(): Collection
+    {
+        return $this->skills;
+    }
+
+    public function removeSkill(Skill $skill): void
+    {
+        $this->skills->removeElement($skill);
     }
 
     public function getProposedByType(): ?string
@@ -180,71 +260,15 @@ class Exercise
         return $this;
     }
 
-    /* RELATIONS */
-
-    #[ORM\ManyToOne(targetEntity: Source::class, inversedBy: 'exercises')]
-    private Source $source;
-    public function setSource (Source $v): void {
-        $this->source = $v;
-    }
-    public function getSource (): Source {
-        return $this->source;
-    }
-
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'exercises')]
-    private User $user;
-    public function setUser (User $v): void {
-        $this->user = $v;
-    }
-    public function getUser (): User {
-        return $this->user;
-    }
-
-    #[ORM\OneToOne(targetEntity:File::class, inversedBy: 'exercise')]
-    private File $exercise_file;
-    public function setExerciseFile (File $v): void {
-        $this->exercise_file = $v;
-    }
-    public function getExerciseFile (): File {
-        return $this->exercise_file;
-    }
-
-    #[ORM\OneToOne(targetEntity:File::class, inversedBy: 'exercise', cascade: array("persist"))]
-    private File $correction_file;
-    public function setCorrectionFile (File $v): void {
-        $this->correction_file = $v;
-    }
-    public function getCorrectionFile (): File {
-        return $this->correction_file;
-    }
-
-    #[ORM\ManyToOne(targetEntity: Classroom::class, inversedBy: 'exercises')]
-    private Classroom $classroom;
-
-    public function setClassroom (Classroom $v): void {
-        $this->classroom = $v;
-    }
-    public function getClassroom (): Classroom {
-        return $this->classroom;
-    }
-
-    #[ORM\ManyToOne(targetEntity: Thematic::class, inversedBy: 'exercises')]
-    private Thematic $thematic;
-
-    public function setThematic(Thematic $v): void {
-        $this->thematic = $v;
-    }
-    public function getThematic (): Thematic {
-        return $this->thematic;
-    }
-
-    #[ORM\ManyToMany(inversedBy: 'exercises', targetEntity: Skill::class)]
-    private Collection $skills;
-    public function __construct()
+    public function getChapter(): ?string
     {
-        $this->skills = new ArrayCollection();
+        return $this->chapter;
     }
-    public function addSkill (Skill $v): void {
-        $this->skills->add($v);
+
+    public function setChapter(string $chapter): static
+    {
+        $this->chapter = $chapter;
+
+        return $this;
     }
 }

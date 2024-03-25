@@ -8,9 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -111,5 +114,25 @@ class User
     public function __construct()
     {
         $this->exercises = new ArrayCollection();
+    }
+
+    // User interface
+
+    public function getRoles(): array
+    {
+        return array($this->role);
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->email;
+    }
+    public function eraseCredentials(): void
+    {
+
+    }
+    public function getSalt():?string 
+    {
+        return null;
     }
 }
