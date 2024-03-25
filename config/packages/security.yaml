@@ -17,10 +17,15 @@ security:
         main:
             lazy: true
             provider: user_provider
+            pattern: ^/(admin|login|logout)
+
+            logout:
+                path: /logout
+                target: login
+
 
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
 
 when@dev:
     security:

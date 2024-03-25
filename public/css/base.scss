@@ -1,4 +1,4 @@
-@import './_variable';
+@import './_theme-light';
 @import './_placeholder';
 
 *,::before,::after{
@@ -13,12 +13,12 @@ body{
 }
 
 a,p,h1,h2,h3,path{
-    color: $gris;
+    color: $grey;
 }
 
 a{
     text-decoration: none;
-    color: $gris;
+    color: $grey;
 }
 
 aside{
@@ -68,7 +68,7 @@ aside{
         }
     }
     li:hover{
-        background-color: $blanc-de-fond;
+        background-color: $white-bg;
     }
 }
 
@@ -80,7 +80,7 @@ aside{
     border-radius: 10px;
     display: flex;
     align-items: center;
-    background-color: $blanc-de-fond;
+    background-color: $white-bg;
     svg{
         height: 60%;
         margin-left: 5%;
@@ -104,7 +104,7 @@ aside{
             svg{
                 width: 20%;
                 path{
-                    color: $bleu-svg;
+                    color: $blue-svg;
                 }
             }
         }
@@ -116,23 +116,24 @@ aside{
     width: 100%;
     padding-top: 2%;
     padding-left: 5%;
-    background-color: $blanc-de-fond;
+    background-color: $white-bg;
     h1{
-        color: $bleu-titre;
+        color: $blue-title;
         font-size: 1.5rem;
         padding-bottom: 1%;
     }
     .content{
         width: 95%;
         height: 92%;
+        padding: 3%;
         border-radius: 10px;
-        background-color: $blanc;
+        background-color: $white;
     }
 }
 
 .footer{
     height: 6%;
-    background-color: $blanc-de-fond;
+    background-color: $white-bg;
     div{
         padding-top: 1%;
         margin-left: 5%;
@@ -141,7 +142,7 @@ aside{
         align-items: center;
         justify-content: space-around;
         p,path{
-            color: $noir;
+            color: $black;
         }
     }
 }
@@ -155,7 +156,7 @@ aside{
         height: 80%;
         padding: 2%;
         border-radius: 10px;
-        background-color: $blanc;
+        background-color: $white;
     }
     ul{
         @extend %list;
