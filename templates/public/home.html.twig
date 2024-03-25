@@ -2,10 +2,8 @@
 
 
 {% block body %}
-    <div class="content-page">
-        <h1>titre de la page</h1>
-        <div class="content">
-            {# {{ component('Table', {'data': data, 'rendered': ['name', 'classroom', 'thematic', 'difficulty', 'duration', 'keywords', 'exercise_file'] }) }} #}
-        </div>
+    <h1>titre de la page</h1>
+    <div class="content">
+        {{ component('Table', {'data': data, 'rendered': ['name', 'classroom', 'thematic', 'difficulty', 'duration', 'keywords', 'exercise_file'] }) }}
     </div>
 {% endblock %}

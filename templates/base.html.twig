@@ -3,10 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}MathIndex{% endblock %}</title>
+<<<<<<< HEAD
         
         <link rel="stylesheet" href="{{asset("css/style.css")}}">
         {% block stylesheets %}
             
+=======
+        <link rel="stylesheet" href="{{asset("css/base.css")}}">
+        {% block stylesheets %}
+>>>>>>> 122ef654d4f4ea02bcf55f1368b57f76cc6045b8
         {% endblock %}
 
         {% block javascripts %}
@@ -33,7 +38,7 @@
                             <path d="M9.58948 22.4969V12.4969H15.5895V22.4969" stroke="#757575" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
 
-                        <p>Accueil</p>
+                        <a href="{{asset("")}}"><p>Accueil</p></a>
                     </li>
                     <li>
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +53,7 @@
                             <path d="M9.58942 17.0401C11.5894 17.0401 12.3894 16.0401 12.3894 14.2401V10.0401C12.3894 8.04009 13.3894 6.74009 15.5894 7.04009" stroke="#1B3168" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M9.58942 11.2401H15.2894" stroke="#1B3168" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <P>Mathématique</p>
+                        <a href="{{asset("math")}}">Mathématique</a>
                     </li>
                     <li>
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,14 +91,14 @@
                     <a href={{ path('connexion') }}>Connexion</a>
                 </li>
             </nav>
-         
-            {% block body %}
 
-
-            {% endblock %}
+            <div class="content-page">
+                {% block body %}
+                {% endblock %}
+            </div>
             <div class="footer">
                 <div>
-                    <p>Mention légales</p>
+                    <p>Mention&nbsp;légales</p>
                     <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.99999 7.33334C5.84094 7.33334 7.33332 5.84095 7.33332 4C7.33332 2.15906 5.84094 0.666672 3.99999 0.666672C2.15904 0.666672 0.666656 2.15906 0.666656 4C0.666656 5.84095 2.15904 7.33334 3.99999 7.33334Z" fill="#464646"/>
                     </svg>
@@ -101,7 +106,7 @@
                     <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.99999 7.33334C5.84094 7.33334 7.33332 5.84095 7.33332 4C7.33332 2.15906 5.84094 0.666672 3.99999 0.666672C2.15904 0.666672 0.666656 2.15906 0.666656 4C0.666656 5.84095 2.15904 7.33334 3.99999 7.33334Z" fill="#464646"/>
                     </svg>
-                    <p>Lycée Saint-Vincent</p>
+                    <p>Lycée&nbsp;Saint&nbsp;-&nbsp;Vincent</p>
                 </div>
             </div>
         </div>
