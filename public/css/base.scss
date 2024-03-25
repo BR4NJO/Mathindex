@@ -19,6 +19,7 @@ a,p,h1,h2,h3,path{
 
 a{
     text-decoration: none;
+    width: 100%;
 }
 
 aside{
@@ -68,7 +69,6 @@ aside{
         }
     }
     li:hover{
-<<<<<<< HEAD:public/css/style.scss
         background-color: $blanc-de-fond;
 
         p:hover{
@@ -76,10 +76,6 @@ aside{
         }
     } 
     
-=======
-        background-color: $white-bg;
-    }
->>>>>>> 122ef654d4f4ea02bcf55f1368b57f76cc6045b8:public/css/base.scss
 }
 
 #deconnexion{
@@ -173,28 +169,5 @@ aside{
     }
 }
 
-<<<<<<< HEAD:public/css/style.scss
 
 
-=======
-table{
-    width: 100%;
-    border-collapse: collapse;
-    thead{
-        background-color: $grey-modal-button-light;
-    }
-}
-
-.file{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-    a{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-}
->>>>>>> 122ef654d4f4ea02bcf55f1368b57f76cc6045b8:public/css/base.scss
