@@ -67,6 +67,14 @@ class Exercise
     #[ORM\ManyToMany(inversedBy: 'exercises', targetEntity: Skill::class)]
     private Collection $skills;
 
+    #[ORM\Column(length: 255)]
+    private ?string $chapter = null;
+
+    public function __construct()
+    {
+        $this->skills = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -248,6 +256,18 @@ class Exercise
     public function setSourceInformation(string $source_information): static
     {
         $this->source_information = $source_information;
+
+        return $this;
+    }
+
+    public function getChapter(): ?string
+    {
+        return $this->chapter;
+    }
+
+    public function setChapter(string $chapter): static
+    {
+        $this->chapter = $chapter;
 
         return $this;
     }
