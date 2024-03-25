@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Trait;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
-class BaseController extends AbstractController {
-    public static function ObjsToArray($objs) {
+trait ObjsToArrayTrait
+{
+    public function ObjsToArray($objs) {
         return array_map(function ($obj) {
             $reflection = new \ReflectionClass($obj);
             $properties = [];
@@ -15,5 +14,5 @@ class BaseController extends AbstractController {
             }
             return $properties;
         }, $objs);
-    }     
+    }
 }

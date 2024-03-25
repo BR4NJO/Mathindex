@@ -7,15 +7,16 @@ use Symfony\Component\Routing\Attribute\Route;
 
 use App\Entity\Exercise;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Controller\BaseController;
+use App\Trait\ObjsToArrayTrait;
 
 class HomeController extends AbstractController
 {
+    use ObjsToArrayTrait;
     #[Route('/', name: 'home')]
     public function home(EntityManagerInterface $m)
     {
         $data = $m->getRepository(Exercise::class)->findAll();
-        $data = BaseController::ObjsToArray($data);
+        $data = $this->ObjsToArray($data);
         return $this->render("public/home.html.twig", [
             "data" => $data,
         ]);
