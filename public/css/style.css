@@ -95,6 +95,9 @@ aside .container-option {
 .container-link-aside li:hover {
   background-color: #EFF2F4;
 }
+.container-link-aside li:hover p:hover {
+  color: #1B3168;
+}
 
 #deconnexion {
   height: 5%;

@@ -3,8 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}MathIndex{% endblock %}</title>
+        
+        <link rel="stylesheet" href="{{asset("css/style.css")}}">
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{asset("css/style.css")}}">
+            
         {% endblock %}
 
         {% block javascripts %}

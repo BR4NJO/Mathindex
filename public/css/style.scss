@@ -69,7 +69,12 @@ aside{
     }
     li:hover{
         background-color: $blanc-de-fond;
-    }
+
+        p:hover{
+            color: #1B3168;
+        }
+    } 
+    
 }
 
 #deconnexion{
@@ -161,3 +166,6 @@ aside{
         @extend %list;
     }
 }
+
+
+
