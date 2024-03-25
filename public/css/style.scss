@@ -1,0 +1,79 @@
+@import './_variable';
+@import './_placeholder';
+
+*,::before,::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    @extend %flex;
+}
+
+aside{
+    width: 15%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1% 0;
+    box-shadow: 0px 3.125011682510376px 35.1563835144043px 0px #00000014;
+    .container-saint-vincent{
+        @extend %flex-around;
+        ul{
+            list-style: none;
+        }
+    }
+    .container-option{
+        height: 20%;
+        @extend %flex-around-column;
+    }
+}
+
+.container-page{
+    width: 85%;
+    height: 100%;
+    nav{
+        height: 10%;
+        @extend %list;
+        li{
+            width: 13%;
+            margin-left: auto;
+            margin-right: 5%;
+            @extend %flex-aling-around;
+            svg{
+                width: 20%;
+                path{
+                    color: $bleu-svg;
+                }
+            }
+        }
+    }
+}
+
+.content-page{
+    height: 90%;
+    width: 100%;
+    background-color: $blanc-de-fond;
+    h2{
+        color: $bleu-titre;
+    }
+}
+
+.container{
+    height: 100%;
+    padding-left: 3%;
+    @extend %flex-around-column;
+    .content{
+        width: 90%;
+        height: 80%;
+        padding: 2%;
+        border-radius: 10px;
+        background-color: $blanc;
+    }
+    ul{
+        @extend %list;
+    }
+}

@@ -1,23 +1,59 @@
+<!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}MathIndex{% endblock %}</title>
-        <meta name="description" content="MathIndex est une application web qui vous permet de consulter et publier des exercices mathématique de tout niveau et sur toute thématique.">
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        
-        <link rel="stylesheet" href="{{asset('font/font.css')}}"/>
-        <link rel="stylesheet" href="{{asset('css/base.css')}}"/>
-        <link rel="stylesheet" href="{{asset('css/base-light.css')}}"/>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{asset("css/style.css")}}">
+        {% endblock %}
 
-        <script src="https://kit.fontawesome.com/f0917de996.js" crossorigin="anonymous"></script>
         {% block javascripts %}
         {% endblock %}
     </head>
-
     <body>
-        {% block body %}{% endblock %}
-    </body>
+      
 
+        <!--========================SIDEBAR========================-->
+
+        <aside>
+            <div class="container-option">
+                <div class="container-saint-vincent">
+                    <ul> 
+                        <img src="image/Saint-Vincent-Senlis4.jpg" alt="#">
+                        <li>Math  Index</li>
+                        <li>Lycée Saint&nbsp;-&nbsp;Senlis</li>
+                    </ul>
+                </div>
+                <div>
+                    <li>Accueil</li>
+                    <li>Recherche</li>
+                    <li>Mathématique</li>
+                    <li></li>
+                    <li></li>
+                </div>
+            </div>
+            <li><a href="#">Déconnexion</a></li>
+        </aside>
+
+        <!--========================NAVBAR========================-->
+
+        <div class="container-page">
+
+            <nav>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    <a href="">Connexion</a>
+                </li>
+            </nav>
+         
+            {% block body %}
+
+
+            {% endblock %}
+
+        </div>
+
+    </body>
 </html>

@@ -1,0 +1,58 @@
+@import './_variable';
+@import './_placeholder';
+
+*,::before,::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    @extend %flex;
+}
+
+aside{
+    width: 15%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1% 0;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    .container-saint-vincent{
+        @extend %flex-around;
+        ul{
+            list-style: none;
+        }
+    }
+    .container-option{
+        height: 20%;
+        @extend %flex-around-column;
+    }
+}
+
+.container-page{
+    width: 85%;
+    height: 100%;
+    nav{
+        height: 10%;
+        @extend %list;
+        li{
+            width: 13%;
+            margin-left: auto;
+            margin-right: 5%;
+            @extend %flex-aling-around;
+            svg{
+                width: 20%;
+                path{
+                    color: $bleu-svg;
+                }
+            }
+        }
+    }
+}
+
+.button-add{
+    background-color: $vert;
+}
