@@ -1,0 +1,17 @@
+h2 {
+  color: #000;
+  padding-bottom: 5px;
+}
+
+table {
+  outline: none;
+}
+
+.new-exercice-table {
+  height: 36%;
+}
+
+.all-exercice-table {
+  height: 60%;
+  margin-top: 1%;
+}/*# sourceMappingURL=math.css.map */

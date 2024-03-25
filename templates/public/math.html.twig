@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset("css/math.css")}}">
+{% endblock %}
+
+{% block body %}
+    <h1>Mathématique</h1>
+    <div class="content">
+        <div class="new-exercice-table">
+            <h2>Nouveautés</h2>
+            {{ component('Table', {'data': data, 'rendered': ['name', 'classroom', 'thematic', 'difficulty', 'duration', 'keywords', 'exercise_file'] }) }}
+        </div>
+        <div class="all-exercice-table">
+            <h2>Tous les exercices</h2>
+            {{ component('Table', {'data': data, 'rendered': ['name', 'classroom', 'thematic', 'difficulty', 'duration', 'keywords', 'exercise_file'] }) }}
+        </div>
+    </div>
+{% endblock %}

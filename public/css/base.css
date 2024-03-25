@@ -1,6 +1,201 @@
-/* responsive */
-*,::before,::after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+body, aside .container-saint-vincent {
+  display: flex;
 }
+
+.container ul, .container-page nav {
+  display: flex;
+  align-items: center;
+}
+
+aside .container-saint-vincent {
+  justify-content: space-around;
+}
+
+.container-page nav li {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.container ul, .container-page nav {
+  list-style: none;
+}
+
+*, ::before, ::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+a, p, h1, h2, h3, path {
+  color: #757575;
+}
+
+a {
+  text-decoration: none;
+}
+
+aside {
+  width: 15%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0px 3.1250116825px 35.1563835144px 0px rgba(0, 0, 0, 0.0784313725);
+}
+aside .container-saint-vincent {
+  height: 14%;
+  align-items: center;
+}
+aside .container-saint-vincent img {
+  width: 15%;
+}
+aside .container-saint-vincent ul {
+  list-style: none;
+}
+aside .container-option {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-link-aside {
+  height: 70%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.container-link-aside li {
+  cursor: pointer;
+  width: 90%;
+  margin: 0 auto;
+  height: 9%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.container-link-aside li svg {
+  margin-left: 5%;
+  height: 90%;
+}
+.container-link-aside li p {
+  margin-left: 5%;
+}
+.container-link-aside li:hover {
+  background-color: #EFF2F4;
+}
+
+#deconnexion {
+  height: 5%;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 5%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  background-color: #EFF2F4;
+}
+#deconnexion svg {
+  height: 60%;
+  margin-left: 5%;
+}
+#deconnexion a {
+  margin-left: 5%;
+}
+
+.container-page {
+  width: 85%;
+  height: 90%;
+}
+.container-page nav {
+  height: 10%;
+}
+.container-page nav li {
+  width: 13%;
+  margin-left: auto;
+  margin-right: 5%;
+}
+.container-page nav li svg {
+  width: 20%;
+}
+.container-page nav li svg path {
+  color: #03053D;
+}
+
+.content-page {
+  height: 95%;
+  width: 100%;
+  padding-top: 2%;
+  padding-left: 5%;
+  background-color: #EFF2F4;
+}
+.content-page h1 {
+  color: #1B3168;
+  font-size: 1.5rem;
+  padding-bottom: 1%;
+}
+.content-page .content {
+  width: 95%;
+  height: 92%;
+  padding: 1% 3%;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+}
+
+.footer {
+  height: 6%;
+  background-color: #EFF2F4;
+}
+.footer div {
+  padding-top: 1%;
+  margin-left: 5%;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.footer div p, .footer div path {
+  color: #000;
+}
+
+.container {
+  height: 100%;
+  padding-left: 3%;
+}
+.container .content {
+  width: 90%;
+  height: 80%;
+  padding: 2%;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table thead {
+  background-color: #F0F0F0;
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.file a {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}/*# sourceMappingURL=base.css.map */
