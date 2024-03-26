@@ -1,0 +1,29 @@
+@import './_theme-light';
+@import './_placeholder';
+
+.content{
+    p,h2,li{
+        font-size: 16px;
+        line-height: 24.57px;
+        color: $black-font;
+    }
+    h2{
+        margin: 1% 0 0 0;
+    }
+    ol{
+        width: 98%;
+        height: 40%;
+        margin: 1% 0 0 1.5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    p{
+        font-weight: 400;
+    }
+    span{
+        color: $black;
+        font-weight: 700;
+    }
+}

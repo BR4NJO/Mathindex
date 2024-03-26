@@ -37,7 +37,7 @@ body {
   height: 100vh;
 }
 
-a, p, h1, h2, h3, path {
+a, p, h1, h3, path {
   color: #757575;
 }
 
