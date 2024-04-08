@@ -35,7 +35,8 @@ class MathController extends AbstractController
         $exercices = $entity->getRepository(Exercise::class)->paginate($currentPage, $countPerPage);
 
         // tableau: nouveau exerice
-        $data = $entity->getRepository(Exercise::class)->findAll();
+        $data = $entity->getRepository(Exercise::class)
+            ->findBy([], ['id' => 'DESC'], 3);
         $data = $this->ObjsToArray($data);
 
         // tableau avec pagination
