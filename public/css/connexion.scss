@@ -1,0 +1,53 @@
+@import './_variable';
+@import './_placeholder';
+
+
+.content-page {
+	h1 {
+		text-transform: uppercase;
+	}
+}
+
+.connexion_text {
+	text-align: left;
+	margin-bottom: 2rem;
+}
+.messageBox {
+	display: flex;
+	align-items: center;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	background: #000;
+	border: 1px solid #000;
+	input {
+		width: 100%;
+		font-size: 1.7rem;
+		color: $color_1;
+		text-transform: none;
+		background: none;
+		border: none;
+		outline: none;
+	}
+	textarea {
+		width: 100%;
+		font-size: 1.7rem;
+		color: $color_1;
+		text-transform: none;
+		background: none;
+		border: none;
+		outline: none;
+	}
+}
+.btn_connexion {
+	margin-top: 1rem;
+	display: inline-block;
+	padding: .9rem 3rem;
+	font-size: 1.7rem;
+	color: $color_1;
+	background: $gris;
+	cursor: pointer;
+	border: none;
+	&:hover {
+		letter-spacing: .1rem;
+	}
+}

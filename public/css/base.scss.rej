@@ -1,0 +1,9 @@
+diff a/public/css/base.scss b/public/css/base.scss	(rejected hunks)
+@@ -0,6 +0,7 @@
+         }
+     }
+     li:hover{
++<<<<<<< HEAD:public/css/style.scss
+         background-color: $blanc-de-fond;
+ 
+         p:hover{

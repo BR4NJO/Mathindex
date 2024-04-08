@@ -43,7 +43,7 @@ a, p, h1, h2, h3, path {
 
 a {
   text-decoration: none;
-  width: 100%;
+  color: #757575;
 }
 
 aside {
@@ -95,9 +95,7 @@ aside .container-option {
 .container-link-aside li:hover {
   background-color: #EFF2F4;
 }
-
-
-.container-link-aside li p:hover{
+.container-link-aside li:hover p:hover {
   color: #1B3168;
 }
 
@@ -153,8 +151,6 @@ aside .container-option {
 .content-page .content {
   width: 95%;
   height: 92%;
-  padding: 1% 3%;
-  padding: 3%;
   border-radius: 10px;
   background-color: #FFFFFF;
 }
@@ -185,58 +181,4 @@ aside .container-option {
   padding: 2%;
   border-radius: 10px;
   background-color: #FFFFFF;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-table thead {
-  background-color: #F0F0F0;
-}
-
-.file {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-}
-.file a {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.content-pagination {
-  width: 37%;
-  height: 7%;
-  margin: 0 auto;
-  margin-bottom: 4%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.content-pagination .container-page {
-  width: 75%;
-  margin: 0 2px;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.content-pagination .container-page li {
-  border: 2px solid #DBDBDB;
-  padding: 5px 12px;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.content-pagination .container-page li.actif {
-  border: 2px solid #757575;
-}
-.content-pagination svg {
-  width: 9%;
-  height: 88%;
-  cursor: pointer;
-}/*# sourceMappingURL=base.css.map */
+}/*# sourceMappingURL=style.css.map */
