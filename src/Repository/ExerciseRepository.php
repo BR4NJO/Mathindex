@@ -20,29 +20,13 @@ class ExerciseRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Exercise::class);
     }
-
-//    /**
-//     * @return Exercise[] Returns an array of Exercise objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('e.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Exercise
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    
+    public function paginate(int $page, int $itemsPerPage): array
+    {
+        return $this->createQueryBuilder('p')
+            ->setFirstResult(($page -1) * $itemsPerPage)
+            ->setMaxResults($itemsPerPage)
+            ->getQuery()
+            ->execute();
+    }
 }

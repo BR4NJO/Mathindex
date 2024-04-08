@@ -7,12 +7,12 @@ use Symfony\Component\Routing\Attribute\Route;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-class HomeController extends AbstractController
+class ExerciceController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    #[Route('/exercice', name: 'exercice')]
     public function home(EntityManagerInterface $entity)
     {
-        return $this->render("public/home.html.twig", [
+        return $this->render("public/exercice.html.twig", [
         ]);
     }
 }

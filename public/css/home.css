@@ -1,0 +1,24 @@
+.content p, .content h2, .content li {
+  font-size: 16px;
+  line-height: 24.57px;
+  color: #1a1a1a;
+}
+.content h2 {
+  margin: 1% 0 0 0;
+}
+.content ol {
+  width: 98%;
+  height: 40%;
+  margin: 1% 0 0 1.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.content p {
+  font-weight: 400;
+}
+.content span {
+  color: #000;
+  font-weight: 700;
+}/*# sourceMappingURL=home.css.map */
