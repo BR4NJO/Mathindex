@@ -12,7 +12,44 @@
         </div>
         <div class="all-exercice-table">
             <h2>Tous les exercices</h2>
-            {{ component('Table', {'data': data, 'rendered': ['name', 'classroom', 'thematic', 'difficulty', 'duration', 'keywords', 'exercise_file'] }) }}
+            {{ component('Table', {'data': exercicespaginate, 'rendered': ['name', 'classroom', 'thematic', 'difficulty', 'duration', 'keywords', 'exercise_file'] }) }}
+        </div>
+        <div class="content-pagination">
+            {# button de pagination #}
+            {% if currentPage == 1 %}
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <a href="{{path('math')}}">
+                        <g opacity="0.5">
+                        <rect width="32" height="32" rx="4" fill="#919EAB"/>
+                        <path d="M19.16 11.41L14.58 16L19.16 20.59L17.75 22L11.75 16L17.75 10L19.16 11.41Z" fill="#C4CDD5"/>
+                        </g>
+                    </a>
+                </svg>
+            {% else %}
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <a href="{{ path('mathShow', {'id': currentPage - 1}) }}">
+                        <g opacity="0.5">
+                        <rect width="32" height="32" rx="4" fill="#919EAB"/>
+                        <path d="M19.16 11.41L14.58 16L19.16 20.59L17.75 22L11.75 16L17.75 10L19.16 11.41Z" fill="#C4CDD5"/>
+                        </g>
+                    </a>
+                </svg>
+            {% endif %}
+            <ul class="container-page">
+                <li class="actif">{{currentPage}}</li>
+                <li><a href="{{path('mathShow',{'id': currentPage + 1}) }}">{{currentPage + 1}}</a></li>
+                <li>...</li>
+                <li><a href="{{ path('mathShow', {'id': countPages - 1}) }}">{{ countPages - 1 }}</a></li>
+                <li><a href="{{ path('mathShow', {'id': countPages}) }}">{{ countPages }}</a></li>
+            </ul>
+            {# button de pagination #}
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <a href="{{path('mathShow',{id: currentPage + 1})}}">
+                    <rect x="0.5" y="0.5" width="31" height="31" rx="3.5" fill="white"/>
+                    <rect x="0.5" y="0.5" width="31" height="31" rx="3.5" stroke="#DFE3E8"/>
+                    <path d="M12.84 11.41L17.42 16L12.84 20.59L14.25 22L20.25 16L14.25 10L12.84 11.41Z" fill="#C4CDD5"/>
+                </a>
+            </svg>
         </div>
     </div>
 {% endblock %}

@@ -182,3 +182,37 @@ table{
         justify-content: space-around;
     }
 }
+
+.content-pagination{
+    width: 37%;
+    height: 7%;
+    margin: 0 auto;
+    margin-bottom: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .container-page{
+        width: 75%;
+        margin: 0 2px;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        li{
+            border: 2px solid $grey-tag;
+            padding: 5px 12px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        li.actif{
+            border: 2px solid $grey;
+        }
+    }
+    svg{
+        width: 9%;
+        height: 88%;
+        cursor: pointer;
+    }
+}
