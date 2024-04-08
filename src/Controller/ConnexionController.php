@@ -8,10 +8,10 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ConnexionController extends AbstractController
 {
-    #[Route('/connexion', name: 'app_connexion')]
+    #[Route('/connexion', name: 'login')]
     public function index(): Response
     {
-        return $this->render('connexion/index.html.twig', [
+        return $this->render('public/connexion.html.twig', [
             'controller_name' => 'ConnexionController',
         ]);
     }

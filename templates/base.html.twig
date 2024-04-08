@@ -5,6 +5,7 @@
         <title>{% block title %}MathIndex{% endblock %}</title>
         <link rel="stylesheet" href="{{asset("css/base.css")}}">
         {% block stylesheets %}
+            <link rel="stylesheet" href="{{asset("css/base.css")}}">
         {% endblock %}
 
         {% block javascripts %}
@@ -60,7 +61,7 @@
                             <path d="M22.5895 2.58325L15.5895 22.5833L11.5895 13.5833L2.58948 9.58325L22.5895 2.58325Z" stroke="#757575" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M22.5895 2.58325L11.5895 13.5833" stroke="#757575" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <p>Soumetrre</p>
+                        <p>Soumettre</p>
                     </li>
                 </ul>
             </div>
@@ -85,10 +86,17 @@
                 </li>
             </nav>
 
+
             <div class="content-page">
                 {% block body %}
                 {% endblock %}
             </div>
+         
+            <div class="content-page">
+            {% block body %}
+            {% endblock %}
+            </div>
+
             <div class="footer">
                 <div>
                     <p>Mention&nbsp;légales</p>

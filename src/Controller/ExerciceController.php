@@ -12,7 +12,7 @@ class ExerciceController extends AbstractController
     #[Route('/exercice', name: 'exercice')]
     public function home(EntityManagerInterface $entity)
     {
-        return $this->render("public/exerice.html.twig", [
+        return $this->render("public/exercice.html.twig", [
         ]);
     }
 }

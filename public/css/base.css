@@ -37,12 +37,14 @@ body {
   height: 100vh;
 }
 
-a, p, h1, h3, path {
+
+a, p, h1, h2, h3, path {
   color: #757575;
 }
 
 a {
   text-decoration: none;
+  color: #757575;
 }
 
 aside {
@@ -148,6 +150,7 @@ aside .container-option {
   width: 95%;
   height: 92%;
   padding: 1% 3%;
+  padding: 3%;
   border-radius: 10px;
   background-color: #FFFFFF;
 }
