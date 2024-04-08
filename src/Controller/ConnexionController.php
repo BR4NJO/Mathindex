@@ -48,11 +48,7 @@ class ConnexionController extends AbstractController
             'last_username'=> $lastUsername,
             'error'=> $error,
             'user'=>$this->getUser(),
-    #[Route('/connexion', name: 'login')]
-    public function index(): Response
-    {
-        return $this->render('public/connexion.html.twig', [
-            'controller_name' => 'ConnexionController',
         ]);
     }
+
 }
