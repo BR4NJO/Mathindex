@@ -19,6 +19,10 @@ security:
             form_login:
                 login_path: connexion
                 check_path: connexion
+            
+            remember_me:
+                secret:   '%kernel.secret%' # required
+                lifetime: 604800 # 1 week in seconds
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
