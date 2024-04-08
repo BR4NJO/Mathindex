@@ -20,5 +20,8 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    # Autowire SessionInterface
+    Symfony\Component\HttpFoundation\Session\SessionInterface: '@session'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

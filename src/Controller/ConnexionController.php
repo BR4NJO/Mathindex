@@ -12,9 +12,17 @@ use Symfony\Component\HttpFoundation\Request;
 
 use App\Repository\UserRepository;
 use App\Entity\User;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 
 class ConnexionController extends AbstractController
 {
+    private $session;
+
+    public function __construct(SessionInterface $session)
+    {
+        $this->session = $session;
+    }
     
     /*======================AJOUT ADMIN======================*/
 
@@ -27,9 +35,13 @@ class ConnexionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
- 
+            
+            $userId = $user->getId();
 
-            // Redirection après ajout réussi
+            
+            $this->session->set('user_'.$userId, true);
+
+            
             return $this->redirectToRoute('/admin');
         }
 
