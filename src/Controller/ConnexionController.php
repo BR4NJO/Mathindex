@@ -14,39 +14,40 @@ use App\Repository\UserRepository;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 
 class ConnexionController extends AbstractController
 {
-    private $session;
-
-    public function __construct(SessionInterface $session)
-    {
-        $this->session = $session;
-    }
+  
     
     /*======================AJOUT ADMIN======================*/
 
     #[Route('/connexion', name: 'connexion')]
-    public function connexion(Request $request, EntityManagerInterface $entityManager): Response
+    public function connexion(AuthenticationUtils $utils): Response
     {
-        $user = new User();
-        $form = $this->createForm(ConnexionType::class, $user);
 
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            
-            $userId = $user->getId();
-
-            
-            $this->session->set('user_'.$userId, true);
-
-            
-            return $this->redirectToRoute('/admin');
-        }
+        $error = $utils->getLastAuthenticationError();
+        $lastUsername = $utils->getLastUsername();
 
         return $this->render('public/connexion.html.twig', [
-            'form' => $form->createView(),
+            'last_username'=> $lastUsername,
+            'error'=> $error,
+            'user'=>$this->getUser(),
+        ]);
+    }
+
+    #[Route('/admin', name: 'admin')]
+    public function admin(AuthenticationUtils $utils): Response
+    {
+
+        $error = $utils->getLastAuthenticationError();
+        $lastUsername = $utils->getLastUsername();
+
+        return $this->render('public/connexion.html.twig', [
+            'last_username'=> $lastUsername,
+            'error'=> $error,
+            'user'=>$this->getUser(),
         ]);
     }
 }

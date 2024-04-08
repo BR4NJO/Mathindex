@@ -3,6 +3,7 @@ security:
         main:
             algorithm: bcrypt
             cost: 13
+        App\Entity\User: auto
 
     providers:
         user_provider:
@@ -15,16 +16,16 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            lazy: true
-            provider: user_provider
+            form_login:
+                login_path: connexion
+                check_path: connexion
 
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
 
 when@dev:
     security:
         password_hashers:
             main:
                 algorithm: bcrypt
-                cost: 4
+                cost: 4 
