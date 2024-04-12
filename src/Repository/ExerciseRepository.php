@@ -29,4 +29,19 @@ class ExerciseRepository extends ServiceEntityRepository
             ->getQuery()
             ->execute();
     }
+
+    public function search(Exercise $exercice): array
+    {
+        $queryBuilder = $this->createQueryBuilder('e')
+            ->Join('e.classroom', 'c')
+            ->Join('e.thematic', 't')
+            ->where('c.id = :classroom')
+            ->andWhere('t.id = :thematic')
+            ->andWhere('e.keywords LIKE :keywords')
+            ->setParameter('classroom', $exercice->getClassroom())
+            ->setParameter('thematic', $exercice->getThematic())
+            ->setParameter('keywords', '%'.$exercice->getKeywords().'%');
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }
