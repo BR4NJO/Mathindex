@@ -7,18 +7,14 @@
     <h1>Rechercher un exerice</h1>
     <div class="content">
         {{ form(form) }}
-        {% if nbExerciceTrouver == 1 %}
-            {% if nbExerciceTrouver >1 %}
-                <h2>{{nbExerciceTrouver}} exercices trouvés</h2>
-            {% else  %}
-                <h2>{{nbExerciceTrouver}} exercice trouvé</h2>
-            {% endif %}
+        {% if nbExerciceTrouver > 1 %}
+            <h2>{{nbExerciceTrouver}} exercices trouvés</h2>
         {% else %}
-            <h2>Aucun exercice rechercher</h2>
+            <h2>{{nbExerciceTrouver}} exercice trouvé</h2>
         {% endif %}
 
-        {# {% if exerciceFound > 0 %}
-             {{ component('Table', {'data': nbExerciceTrouver, 'rendered': ['name', 'difficulty',  'keywords', 'duration', 'exercise_file'] }) }}
-        {% endif %} #}
+        {% if nbExerciceTrouver > 0 %}
+             {{ component('TableExercise', {'data': exercises, 'rendered': ['name', 'difficulty',  'keywords', 'duration', 'exercise_file'] }) }}
+        {% endif %}
     </div>
 {% endblock %}

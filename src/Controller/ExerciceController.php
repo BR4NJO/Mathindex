@@ -19,73 +19,27 @@ class ExerciceController extends AbstractController
     public function exercice(Request $request, EntityManagerInterface $entityManager)
     {
     
-        $form = $this->createForm(ExerciseSearchFormType::class, [
-            'method' => 'POST',
+        $form = $this->createForm(ExerciseSearchFormType::class, null, [
+            'method' => 'GET',
         ]);
     
         $form->handleRequest($request);
+
+        $exercises = [];
     
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
-    
-            $exercise = new Exercise();
-            $exercise->setThematic($data['thematic']);
-            $exercise->setKeywords($data['keywords']);
-            $exercise->setClassroom($data['classroom']);
-    
-            // Appeler la méthode de recherche dans votre repository Exercise
-            $exercises = $entityManager->getRepository(Exercise::class)->search($exercise); 
-    
-            // Rediriger vers la route 'exercice' avec les résultats de la recherche
-            return $this->redirectToRoute('exerciceFound', [
-                'exercises' => $exercises]
-            );
-        }
-        
-        $nbExerciceTrouver = 0;
+            // Call the search method in Exercise repository
+            $exercises = $entityManager->getRepository(Exercise::class)->search($data);
 
+            $nbExerciceTrouver = count($exercises);
+        }
+    
         return $this->render('public/exercice.html.twig', [
             'form' => $form,
-            'nbExerciceTrouver' => $nbExerciceTrouver,
-        ]);
-    }
-
-    #[Route('/exerciceFound', name: 'exerciceFound')]
-    public function exerciceFound(Request $request, EntityManagerInterface $entity, array $exercises)
-    {
-
-        $form = $this->createForm(ExerciseSearchFormType::class,[
-            'method' => 'POST',
-        ]);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Récupérer les données du formulaire
-            $data = $form->getData();
-
-            $exercice = new Exercise();
-            $exercise->setClassroom($data['thematic']);
-            $exercise->setClassroom($data['Keywords']);
-            $exercise->setClassroom($data['classroom']);
-
-            // Appeler la méthode de recherche dans votre repository Exercise
-            $exercises = $this->getDoctrine()
-                ->getRepository(Exercise::class)
-                ->search($exerice);
-
-            // Rediriger vers la route 'exercice' avec les résultats de la recherche
-            return $this->redirectToRoute('exerciceFound', ['exercises' => $exercises]);
-        }
-
-        $nbExerciceTrouver = count($exercises);
-
-        return $this->render('public/exercice.html.twig', [
-            'form' => $form,
+            'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
             'exercises' => $exercises,
-            'nbExerciceTrouver' => $nbExerciceTrouver,
         ]);
     }
-
 }
