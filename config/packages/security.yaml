@@ -21,8 +21,8 @@ security:
                 check_path: connexion
             
             remember_me:
-                secret:   '%kernel.secret%' # required
-                lifetime: 604800 # 1 week in seconds
+                secret:   '%kernel.secret%' # requis
+                lifetime: 604800 # 1 semaine en secondes
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
