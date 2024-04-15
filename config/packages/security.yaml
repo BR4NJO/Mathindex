@@ -24,6 +24,10 @@ security:
                 secret:   '%kernel.secret%' # requis
                 lifetime: 604800 # 1 semaine en secondes
 
+            logout:
+                path: app_logout
+
+                
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
 
