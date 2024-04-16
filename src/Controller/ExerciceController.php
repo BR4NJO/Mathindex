@@ -6,7 +6,6 @@ use App\Entity\Exercise;
 use App\Entity\Thematic;
 use App\Entity\Classroom;
 use App\Form\ExerciseSearchFormType;
-// use App\src\Repository\ExerciseRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -17,49 +16,57 @@ use Doctrine\ORM\EntityManagerInterface;
 class ExerciceController extends AbstractController
 {
     #[Route('/exercice', name: 'exercice')]
-    public function home(Request $request, EntityManagerInterface $entityManager)
+    public function exercice(Request $request, EntityManagerInterface $entityManager)
     {
-        $exerciseRepository = $entityManager->getRepository(Exercise::class);
-
-        // Récupérer les 3 exercices les plus récents
-        $recentExercises = $exerciseRepository->findBy([], ['id' => 'DESC'], 3);
-
-        $form = $this->createForm(ExerciseSearchFormType::class, [
-            'method' => 'POST',
+    
+        $form = $this->createForm(ExerciseSearchFormType::class, null, [
+            'method' => 'GET',
         ]);
-
+    
         $form->handleRequest($request);
 
+        $exercises = [];
+    
         if ($form->isSubmitted() && $form->isValid()) {
-            // Traitement lorsque le formulaire est soumis et valide
-            // Redirection vers une autre route par exemple
-            return $this->redirectToRoute('exerciceFound', ['id' => $id]);
+            $data = $form->getData();
+
+            // Call the search method in Exercise repository
+            $exercises = $entityManager->getRepository(Exercise::class)->search($data);
+            $nbExerciceTrouver = count($exercises);
         }
 
-        // Vous pouvez compter le nombre d'exercices trouvés ici si nécessaire
-        $nbExerciceTrouver = count($recentExercises);
+        if($nbExerciceTrouver > 7){
+            return $this->render('public/exercice.html.twig', [
+                'form' => $form,
+                'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
+                'exercises' => $exercises,
+                'paginate' => true,
+            ]);
+        }else{
 
-        return $this->render('public/exercice.html.twig', [
-            'recentExercises' => $recentExercises,
-            'form' => $form->createView(),
-            'nbExerciceTrouver' => $nbExerciceTrouver,
-        ]);
-    }
+            // pagination
+            $count = $entity->getRepository(Exercise::class)->count([]);
+            $countPerPage = 6;
+            
+            $currentPage = $request->query->getInt('page',1);
+            $countPages = ceil($count/$countPerPage);
+            
+            // On vérifie que la page renseignée dans l'url est valide, si ce n'est pas le cas on génère une 404.
+            if ($currentPage > $countPages || $currentPage <= 0) {
+                throw $this->createNotFoundException();
+            }
+        
+            $exercices = $entity->getRepository(Exercise::class)->paginate($currentPage, $countPerPage);
 
-    #[Route('/exercice/{id}', name:'exerciceFound')]
-    public function exerciceFound(Request $request, EntityManagerInterface $entity, string $id)
-    {
-        $exercice = new Exercise();
-
-        $form = $this->createForm(ExerciseSearchFormType::class,[
-            'method' => 'POST',
-        ]);
-
-        $nbExerciceTrouver = 0;
-
-        return $this->render('public/exercice.html.twig', [
-            'form' => $form,
-            'nbExerciceTrouver' => $nbExerciceTrouver,
-        ]);
+            return $this->render('public/exercice.html.twig', [
+                'form' => $form,
+                'paginate' => false,
+                'exercises' => $exercises,
+                'countPages' => $countPages,
+                'currentPage' => $currentPage,
+                "exercicespaginate" => $exercicespaginate,
+                'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
+            ]);
+        }
     }
 }
