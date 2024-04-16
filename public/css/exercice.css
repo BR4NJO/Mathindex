@@ -34,4 +34,17 @@ form #exercise_search_form div input, form #exercise_search_form div select {
 
 h2 {
   margin-top: 1%;
+}
+
+table {
+  max-height: 50vh;
+  border: 1px solid red !important;
+}
+table td:nth-child(5) {
+  display: flex;
+  flex-direction: column;
+}
+table td:nth-child(5) a {
+  align-items: center;
+  display: flex;
 }/*# sourceMappingURL=exercice.css.map */
