@@ -16,15 +16,12 @@ use Doctrine\ORM\EntityManagerInterface;
 class ExerciceController extends AbstractController
 {
     #[Route('/exercice', name: 'exercice')]
-    public function exercice(Request $request, EntityManagerInterface $entityManager)
+    public function exercice(Request $request, EntityManagerInterface $entity)
     {
-<<<<<<< HEAD
-        return $this->render("public/exercice.html.twig", [
-=======
+        $nbExerciceTrouver = 0;
     
         $form = $this->createForm(ExerciseSearchFormType::class, null, [
             'method' => 'GET',
->>>>>>> 4038a046f66f5164c2ad2383666dad7e0b964b5a
         ]);
     
         $form->handleRequest($request);
@@ -35,7 +32,7 @@ class ExerciceController extends AbstractController
             $data = $form->getData();
 
             // Call the search method in Exercise repository
-            $exercises = $entityManager->getRepository(Exercise::class)->search($data);
+            $exercises = $entity->getRepository(Exercise::class)->search($data);
             $nbExerciceTrouver = count($exercises);
         }
 
@@ -46,7 +43,7 @@ class ExerciceController extends AbstractController
                 'exercises' => $exercises,
                 'paginate' => true,
             ]);
-        }else{
+            }else{
 
             // pagination
             $count = $entity->getRepository(Exercise::class)->count([]);
@@ -68,7 +65,6 @@ class ExerciceController extends AbstractController
                 'exercises' => $exercises,
                 'countPages' => $countPages,
                 'currentPage' => $currentPage,
-                "exercicespaginate" => $exercicespaginate,
                 'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
             ]);
         }
