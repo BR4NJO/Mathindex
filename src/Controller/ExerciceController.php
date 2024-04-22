@@ -51,6 +51,15 @@ class ExerciceController extends AbstractController
                 'currentPage' => $currentPage,
                 'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
             ]);
+        }else{
+            return $this->render('public/exercice.html.twig', [
+                'form' => $form,
+                'paginate' => true,
+                'exercises' => $exercises,
+                'countPages' => $countPages,
+                'currentPage' => $currentPage,
+                'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
+            ]);
         }
     }
 
@@ -71,16 +80,17 @@ class ExerciceController extends AbstractController
             throw $this->createNotFoundException();
         }
     
-        $exercices = $entityManager->getRepository(Exercise::class)->paginate($currentPage, $countPerPage);
+        $exercises = $entityManager->getRepository(Exercise::class)->paginate($currentPage, $countPerPage);
         return $this->render('public/exercice.html.twig', [
             'form' => $form,
             'paginate' => true,
             'exercises' => $exercises,
             'countPages' => $countPages,
             'currentPage' => $currentPage,
-            "exercicespaginate" => $exercicespaginate,
             'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
         ]);
-        }
+        
     }
+}
+
 
