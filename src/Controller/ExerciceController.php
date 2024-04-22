@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 
 class ExerciceController extends AbstractController
-{
+{ 
     #[Route('/exercice', name: 'exercice')]
     public function exercice(Request $request, EntityManagerInterface $entityManager)
     {
@@ -51,6 +51,15 @@ class ExerciceController extends AbstractController
                 'currentPage' => $currentPage,
                 'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
             ]);
+        }else{
+            return $this->render('public/exercice.html.twig', [
+                'form' => $form,
+                'paginate' => true,
+                'exercises' => $exercises,
+                'countPages' => $countPages,
+                'currentPage' => $currentPage,
+                'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
+            ]);
         }
     }
 
@@ -75,18 +84,29 @@ class ExerciceController extends AbstractController
         
         // On vérifie que la page renseignée dans l'url est valide, si ce n'est pas le cas on génère une 404.
         if ($currentPage > $countPages || $currentPage <= 0) {
-            throw $this->createNotFoundException();
+            return $this->render("404.html.twig", []);
         }
     
-        $exercices = $entityManager->getRepository(Exercise::class)->paginate($currentPage, $countPerPage);
-        return $this->render('public/exercice.html.twig', [
-            'form' => $form,
-            'paginate' => true,
-            'exercises' => $exercises,
-            'countPages' => $countPages,
-            'currentPage' => $currentPage,
-            'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
-        ]);
+        $exercises = $entityManager->getRepository(Exercise::class)->paginate($currentPage, $countPerPage);
+        if($nbExerciceTrouver < 7){
+            return $this->render('public/exercice.html.twig', [
+                'form' => $form,
+                'paginate' => false,
+                'exercises' => $exercises,
+                'countPages' => $countPages,
+                'currentPage' => $currentPage,
+                'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
+            ]);
+        }else{
+            return $this->render('public/exercice.html.twig', [
+                'form' => $form,
+                'paginate' => true,
+                'exercises' => $exercises,
+                'countPages' => $countPages,
+                'currentPage' => $currentPage,
+                'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
+            ]);
+        }
         
     }
     
