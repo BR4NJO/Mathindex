@@ -52,30 +52,32 @@ class ExerciceController extends AbstractController
             ]);
             }else{
 
-            // pagination
-            $count = $entity->getRepository(Exercise::class)->count([]);
-            $countPerPage = 6;
+                // pagination
+                $count = $entity->getRepository(Exercise::class)->count([]);
+                $countPerPage = 6;
+                
+                $currentPage = $request->query->getInt('page',1);
+                $countPages = ceil($count/$countPerPage);
+                
+                // On vérifie que la page renseignée dans l'url est valide, si ce n'est pas le cas on génère une 404.
+                if ($currentPage > $countPages || $currentPage <= 0) {
+                    throw $this->createNotFoundException();
+                }
             
-            $currentPage = $request->query->getInt('page',1);
-            $countPages = ceil($count/$countPerPage);
-            
-            // On vérifie que la page renseignée dans l'url est valide, si ce n'est pas le cas on génère une 404.
-            if ($currentPage > $countPages || $currentPage <= 0) {
-                throw $this->createNotFoundException();
-            }
-        
-            $exercices = $entity->getRepository(Exercise::class)->paginate($currentPage, $countPerPage);
+                $exercices = $entity->getRepository(Exercise::class)->paginate($currentPage, $countPerPage);
 
-        if($nbExerciceTrouver < 7){
-            return $this->render('public/exercice.html.twig', [
-                'form' => $form,
-                'paginate' => false,
-                'exercises' => $exercises,
-                'countPages' => $countPages,
-                'currentPage' => $currentPage,
-                'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
-            ]);
-        }
+                if($nbExerciceTrouver < 7){
+                return $this->render('public/exercice.html.twig', [
+                    'form' => $form,
+                    'paginate' => false,
+                    'exercises' => $exercises,
+                    'countPages' => $countPages,
+                    'currentPage' => $currentPage,
+                    'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
+
+                ]);
+            }
+        }   
     }
 
     #[Route('/exercice/page="{id}"', name: 'mathShow')]
