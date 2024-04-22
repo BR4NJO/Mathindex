@@ -33,7 +33,7 @@ class MyExercicesController extends AbstractController
 
         // On vérifie que la page renseignée dans l'url est valide, si ce n'est pas le cas on génère une 404.
         if ($currentPage > $countPages || $currentPage <= 0) {
-            throw $this->createNotFoundException();
+            return $this->render("404.html.twig", []);
         }
 
         $exercices = $entity->getRepository(Exercise::class)->paginate($currentPage, $countPerPage);
