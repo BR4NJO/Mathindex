@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ExerciseSearchFormType extends AbstractType
 {
@@ -19,18 +20,21 @@ class ExerciseSearchFormType extends AbstractType
             ->add('classroom', EntityType::class, [
                 'class' => Classroom::class,
                 'choice_label' => 'name',
+                'required' => false,
             ])
-
+            
             ->add('thematic', EntityType::class, [
                 'class' => Thematic::class,
                 'choice_label' => 'name',
+                'required' => false,
             ])
-
-            ->add('keywords')
-
-            ->add('Rechercher', SubmitType::class,[
-
+            
+            ->add('keywords', TextareaType::class, [
+                'required' => false,
             ])
-        ;
+            
+            ->add('Rechercher', SubmitType::class)
+            
+            ;
     }
 }
