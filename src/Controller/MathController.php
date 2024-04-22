@@ -17,11 +17,6 @@ class MathController extends AbstractController
 {
     use ObjsToArrayTrait;
 
-   public function error404(): Response
-   {
-       return $this->render('404.html.twig');
-   }
-
     #[Route('/math', name: 'math')]
     public function math(EntityManagerInterface $entity, Request $request): Response
     {

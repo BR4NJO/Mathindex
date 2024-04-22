@@ -13,3 +13,12 @@ tr{
 tbody tr{
     color: #7a8894;
 }
+
+td.exercisefile{
+    height: 8vh;
+}
+
+td.action a{
+    display: flex;
+    justify-content: space-around;
+}
