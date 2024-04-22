@@ -68,6 +68,13 @@ class ExerciceController extends AbstractController
     {
         $exercises = [];
 
+          
+        $form = $this->createForm(ExerciseSearchFormType::class, null, [
+            'method' => 'GET',
+        ]);
+    
+        $form->handleRequest($request);
+
         // pagination
         $count = $entityManager->getRepository(Exercise::class)->count([]);
         $countPerPage = 6;
@@ -102,5 +109,5 @@ class ExerciceController extends AbstractController
         }
         
     }
+    
 }
-

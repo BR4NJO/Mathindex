@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{asset("css/exercice.css")}}">
     <link rel="stylesheet" href="{{asset("css/components/Table.css")}}">
 {% endblock %}
 
 {% block body %}
-    <h1>Rechercher un exerice</h1>
+    <h1>Rechercher un exercice</h1>
     <div class="content">
         {{ form(form) }}
         {% if nbExerciceTrouver > 1 %}
@@ -90,3 +91,4 @@
         {% endif %}
     </div>
 {% endblock %}
+

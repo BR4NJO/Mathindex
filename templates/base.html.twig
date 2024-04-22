@@ -51,10 +51,12 @@
                     
                         <a href="{{path("math")}}"><p>Mathématiques</p></a>
                     </li>
+                    {% if app.user is not null %}
                     <li>
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8.58942 4.31165H21.5894V6.31165H8.58942V4.31165ZM3.58942 3.81165H6.58942V6.81165H3.58942V3.81165ZM3.58942 10.8116H6.58942V13.8116H3.58942V10.8116ZM3.58942 17.8116H6.58942V20.8116H3.58942V17.8116ZM8.58942 11.3116H21.5894V13.3116H8.58942V11.3116ZM8.58942 18.3116H21.5894V20.3116H8.58942V18.3116Z" fill="#757575"/>
                         </svg>
+                        <a href="{{path("my_exercices")}}"><p>Mes&nbsp;exercices</p></a>
 
                         <a href="{{path("myExercices")}}"><p>Mes&nbsp;exercices</p></a>
                     </li>
@@ -65,28 +67,63 @@
                         </svg>
                         <p>Soumettre</p>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
-            <li id="deconnexion">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
-                </svg>
-                <a href="{# {{path("connexion")}} #}">Déconnexion</a>
-            </li>
+
+            {% if app.user is not null %}
+                <li id="deconnexion">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
+                    </svg>
+                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+                </li>
+            {% endif %}
         </aside>
 
         <!--========================NAVBAR========================-->
 
         <div class="container-page">
 
+            
+
             <nav>
-                <li>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                    <a href={{path('connexion') }}>Connexion</a>
-                </li>
+
+                {% if app.user is not null %}
+                    <li class="nav_profile">
+                        <div class="avatar">
+                            <img src="{{ asset('image/pas_guyard.jpg') }}" alt="C'est pas guyard">
+                        </div>
+                        <ul>
+                            <li id="deconnexion">
+                                <a href="{{ path('app_logout') }}">Administration</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                            </li>
+                            <li id="deconnexion">
+                                <a href="{{ path('app_logout') }}">Déconnexion</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
+                                </svg>
+                            </li>
+                        </ul>
+
+
+                    </li>
+                {% endif %}
+                {% if app.user is null %}
+
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <a href={{path('connexion') }}>Connexion</a>
+                    </li>
+                {% endif %}
             </nav>
+
+            
 
 
             <!--========================CONTENU PAGES========================-->

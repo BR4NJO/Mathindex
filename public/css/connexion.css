@@ -2,13 +2,11 @@
 
 .connexion_text {
   text-align: left;
-  padding: 2rem;
+  padding: 1rem;
   font-size: 1.3rem;
 }
 
 .messageBox {
-  display: flex;
-  align-items: center;
   margin: 2rem;
 
 }
@@ -35,6 +33,14 @@
   text-transform: none;
   background: none;
   outline: none;
+}
+
+.remember{
+  margin-left: 2rem;
+}
+
+.connexion_verification{
+  margin-top: 1rem;
 }
 
 .btn_connexion {
