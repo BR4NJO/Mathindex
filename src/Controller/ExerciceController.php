@@ -16,9 +16,8 @@ use Doctrine\ORM\EntityManagerInterface;
 class ExerciceController extends AbstractController
 {
     #[Route('/exercice', name: 'exercice')]
-    public function exercice(Request $request, EntityManagerInterface $entity)
+    public function exercice(Request $request, EntityManagerInterface $entityManager)
     {
-        $nbExerciceTrouver = 0;
     
         $form = $this->createForm(ExerciseSearchFormType::class, null, [
             'method' => 'GET',
@@ -39,51 +38,33 @@ class ExerciceController extends AbstractController
             $data = $form->getData();
 
             // Call the search method in Exercise repository
-            $exercises = $entity->getRepository(Exercise::class)->search($data);
+            $exercises = $entityManager->getRepository(Exercise::class)->search($data);
             $nbExerciceTrouver = count($exercises);
         }
 
-        if($nbExerciceTrouver > 7){
+        if($nbExerciceTrouver < 7){
             return $this->render('public/exercice.html.twig', [
                 'form' => $form,
-                'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
+                'paginate' => false,
                 'exercises' => $exercises,
-                'paginate' => true,
+                'countPages' => $countPages,
+                'currentPage' => $currentPage,
+                'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
             ]);
-            }else{
-
-                // pagination
-                $count = $entity->getRepository(Exercise::class)->count([]);
-                $countPerPage = 6;
-                
-                $currentPage = $request->query->getInt('page',1);
-                $countPages = ceil($count/$countPerPage);
-                
-                // On vérifie que la page renseignée dans l'url est valide, si ce n'est pas le cas on génère une 404.
-                if ($currentPage > $countPages || $currentPage <= 0) {
-                    throw $this->createNotFoundException();
-                }
-            
-                $exercices = $entity->getRepository(Exercise::class)->paginate($currentPage, $countPerPage);
-
-                if($nbExerciceTrouver < 7){
-                return $this->render('public/exercice.html.twig', [
-                    'form' => $form,
-                    'paginate' => false,
-                    'exercises' => $exercises,
-                    'countPages' => $countPages,
-                    'currentPage' => $currentPage,
-                    'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
-
-                ]);
-            }
-        }   
+        }
     }
 
     #[Route('/exercice/page="{id}"', name: 'mathShow')]
     public function exerciceFound(Request $request, EntityManagerInterface $entityManager, int $id)
     {
         $exercises = [];
+
+          
+        $form = $this->createForm(ExerciseSearchFormType::class, null, [
+            'method' => 'GET',
+        ]);
+    
+        $form->handleRequest($request);
 
         // pagination
         $count = $entityManager->getRepository(Exercise::class)->count([]);
@@ -104,7 +85,6 @@ class ExerciceController extends AbstractController
             'exercises' => $exercises,
             'countPages' => $countPages,
             'currentPage' => $currentPage,
-            "exercicespaginate" => $exercicespaginate,
             'nbExerciceTrouver' => $nbExerciceTrouver ?? 0,
         ]);
         
