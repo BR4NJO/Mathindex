@@ -16,6 +16,22 @@ tbody tr{
 
 td.exercisefile{
     height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+td.exercisefile a{
+    width: 60%;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+td.exercisefile p{
+    text-align: left;   
 }
 
 td.action a{
