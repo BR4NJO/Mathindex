@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset("css/soumettre.css")}}">
+{% endblock %}
+
+{% block body %}
+<h1>Soumettre</h1>
+<div class="content">
+    <form method="post" action="{{path('soumettre')}}">
+        <div>
+            <h1>Fichiers</h1>
+            {% if 'file_1_nofile' in errors %}<span class="error">Veuillez téléverser un fichier</span>{% endif %}
+            {% if 'file_1_badfile' in errors %}<span class="error">Erreur de lecture du fichier</span>{% endif %}
+            {{ form_row(form.exercise_file) }}
+            {% if 'file_2_nofile' in errors %}<span class="error">Veuillez téléverser un fichier</span>{% endif %}
+            {% if 'file_2_badfile' in errors %}<span class="error">Erreur de lecture du fichier</span>{% endif %}
+            {{ form_row(form.correction_file) }}
+            <button>Enregistrer</button>
+        </div>
+
+        {{ form_widget(form._token) }}
+        <input type="hidden" name="page" value="3"></input>
+
+        <div style="display:none;">
+            {{ form_row(form.name) }}
+            {{ form_row(form.course) }}
+            {{ form_row(form.classroom) }}
+            {{ form_row(form.thematic) }}
+            {{ form_row(form.chapter) }}
+            {{ form_row(form.skills, {'attr': {'class': 'skills-container'}}) }}
+            {{ form_row(form.keywords) }}
+            {{ form_row(form.difficulty) }}
+            {{ form_row(form.duration) }}
+            {{ form_row(form.source) }}
+            {{ form_row(form.source_name) }}
+            {{ form_row(form.source_information) }}
+            {{ form_row(form.proposed_by_type) }}
+            {{ form_row(form.proposed_by_first_name) }}
+            {{ form_row(form.proposed_by_last_name) }}
+        </div>
+    </form>
+</div>
+{% endblock %}

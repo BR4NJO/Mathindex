@@ -24,7 +24,8 @@
         "symfony/ux-twig-component": "^2.16",
         "symfony/validator": "6.4.*",
         "symfony/yaml": "6.4.*",
-        "twig/twig": "*"
+        "twig/twig": "*",
+        "vich/uploader-bundle": "^2.3"
     },
     "config": {
         "allow-plugins": {

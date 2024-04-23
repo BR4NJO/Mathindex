@@ -1,0 +1,65 @@
+@import './_theme-light';
+@import './_placeholder';
+
+.flex {
+    @extend %flex-around;
+    .flexright {
+        margin-top: 5%;
+    }
+    div {
+        width: 50%;
+        h1 {
+            font-size: 22px;
+        }
+        div {
+            @extend %flex-around-column;
+            margin: 0 0 3% 0;
+            color: $grey-form;
+            label {
+                margin: 2% 0 0 0;
+                font-weight: bold;
+                font-size: 14px;
+            }
+            input[type="checkbox"] {
+                width: 16px !important;            }
+            input, select {
+                font-size: 16px;
+                padding: 3%;
+                width: 180%;
+                border: 2px solid $grey-light;
+                border-radius: 8px;
+                option {
+                    color: $grey-form;
+                }
+            }
+        }
+        .continue {
+            font-size: 14px;
+            font-weight: bold;
+            padding: 2% 6%;
+            background-color: $grey-light;
+            color: $grey;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: .2s;
+        }
+        .continue:hover {
+            border: 2px solid $black;
+        }
+    }
+}
+.skills-container {
+    width: 150% !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    label, input {
+        font-weight: normal !important;
+        flex-basis: 25%;
+        margin: 1% 0 0 0;
+    }
+}
+.error {
+    font-size: 12px;
+    font-weight: bold;
+    color: $error;
+}
