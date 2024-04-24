@@ -23,6 +23,12 @@ a{
     color: $grey;
 }
 
+.avatar{
+    img{
+        width: 24px;
+    }
+}
+
 aside{
     width: 15%;
     list-style: none;
