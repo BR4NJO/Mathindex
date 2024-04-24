@@ -14,7 +14,7 @@
     <div class="content">
         {# Intégration du formulaire Symfony #}
 
-            <p class="connexion_text">Cet espace est réservé aux enseignants du lycée Saint-Vincent - Senlis. 
+            <p class="connexion_text">Cet espace est réservé aux enseignants et élèves contributuers du lycée Saint-Vincent - Senlis. 
                 Si vous n’avez pas encore de compte, veuillez effectuer votre demande directement en envoyant un email à contact@lyceestvincent.net.
             </p>   
 
@@ -48,7 +48,7 @@
 
                 <div class="connexion_verification">
                     <input type="submit" value="Connexion" class="btn_connexion">
-                    <a href="mailto:adresse@email.com" class="connexion_password">Mot de passe oublié ?</a>
+                    <a href="{{path('mail')}}" class="connexion_password">Mot de passe oublié ?</a>
                 </div> 
             </form>
         </div>
