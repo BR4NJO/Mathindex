@@ -20,6 +20,16 @@ class UserRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, User::class);
     }
+    
+    public function findByFirstNameEndsWith($name)
+    {
+        return $this->createQueryBuilder('u')
+            ->select('u.id, u.email, u.last_name as lastName, u.first_name as firstName, u.role, u.password')
+            ->andWhere('u.first_name LIKE :name')
+            ->setParameter('name', '%'.$name.'%')
+            ->getQuery()
+            ->getResult();
+    }
 
 //    /**
 //     * @return User[] Returns an array of User objects

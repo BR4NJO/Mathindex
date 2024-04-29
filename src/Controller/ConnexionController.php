@@ -40,7 +40,6 @@ class ConnexionController extends AbstractController
     #[Route('/admin', name: 'admin')]
     public function admin(AuthenticationUtils $utils): Response
     {
-
         $error = $utils->getLastAuthenticationError();
         $lastUsername = $utils->getLastUsername();
 

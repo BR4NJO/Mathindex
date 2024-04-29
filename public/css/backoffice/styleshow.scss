@@ -1,0 +1,40 @@
+.search-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1%;
+    a{
+        height: 5vh;
+        width: 10%;
+        background-color: #52B788;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #F1F1F1;
+    }
+}
+
+.search-bar{
+    width: 80%;
+    height: 5vh;
+    border-radius: 25px;
+    outline: none;
+    button{
+        width: 15%;
+        height: 100%;
+    }
+    input{
+        width: 75%;
+        height: 100%;
+    }
+}
+
+.action{
+    display: flex;
+    justify-content: space-around;
+    a{
+        width: fit-content;
+        display: flex;
+        align-items: center;
+    }
+}

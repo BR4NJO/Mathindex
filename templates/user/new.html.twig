@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+    <h1>Administration</h1>
+
+    <div class="content">
+        <h2>Ajouter un contributeur</h2>
+
+        {{ include('user/_form.html.twig') }}
+
+
+        <a href="{{ path('app_user_index') }}">revenir à la liste</a>
+
+    </div>
+{% endblock %}

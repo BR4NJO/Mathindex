@@ -28,8 +28,8 @@ security:
                 path: app_logout
 
                 
-    access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
+    # access_control:
+    #     - { path: ^/admin, roles: admin }
 
 when@dev:
     security:
