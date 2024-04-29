@@ -24,7 +24,7 @@ class MyExercicesController extends AbstractController
     {
         // On récupére le nombre d'exercice étant lié au user
             $exercices = $entity->getRepository(Exercise::class)
-            ->findBy(['user' => $user]);
+            ->findBy(['user' => $this->getUser()]);
             // dd($exerciseUser);
 
         // tableau avec pagination
