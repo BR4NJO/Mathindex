@@ -10,42 +10,42 @@ Ce site est comprend plusieurs pages:
 - une page avec tous les exercices créés par le contributeur ou l'administrateur
 - plusieurs pages d'administration
 
-Identifiants :
+Identifiants de testing :
 
 ![Capture](https://github.com/BR4NJO/Mathindex/assets/101703473/0d35cade-fb22-440b-958f-14f730b08756)
 
-
 Installation du projet :
 
-1. afin d’initialiser le projet, veuillez vous rendre à la racine de projet et écrire en lignes de commande :
+1. afin d’initialiser le projet, veuillez vous rendre à la racine de projet et écrire en ligne de commande :
 
 composer install
 
-
-2. Si vous avez de modifier le style du projet, veuillez entrer la commande suivante :
+2. Si vous avez de modifié le style du projet, veuillez entrer les commandes suivantes :
 
 npm init
 npm Install @symfony/stimulus-bridge
 npm run watch
 
-3. Afin de créer la base de données et de charger les donnés de tests veuillez entrer c’est lignes de commandes :
+3. Afin de créer la base de données, veuillez entrer ces lignes de commande :
 
-Symfony console doctrine: database: create
-Symfony console doctrine: schéma: update
-Symfony console doctrine: fixtures: load 
-(attention si vous ne voulez pas entrer les données de test, n’entrer pas la ligne ci-dessus)
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:update --force
 
-4. Afin de pouvoir vous rendre sur le site internet, veuillez entrer :
+Cette ligne permet de créer les données de test :
+
+php bin/console doctrine:fixtures:load 
+
+4. Le démarrage du server se fait via cette dernière commande :
  
 symfony server:start
 
-Après cela vous aurez accès au site par le brier de ce lien :
+Après cela, vous aurez accès au site à l'adresse locale :
 
-127.0.0.1:8001
+127.0.0.1:8000
 
 
-Autheurs:
+Auteurs:
 
 - Marcus Favernay (github : marcusWeb04)
-- Dimitri Granite (github : Snekye)
+- Dimitri Granit (github : Snekye)
 - Alexandre Brunet (github : BR4NJO)
