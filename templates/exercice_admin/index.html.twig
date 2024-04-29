@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('css/backoffice/styleshow.css')}}">
+{% endblock %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <h1>Administration</h1>
+    
+    <div class="button-line">
+        <a href="{{ path('app_user_index') }}">Contributeurs</a>
+        <a href="{{ path('app_exercice_admin') }}">Exercices</a>
+        <a href="{{ path('app_course_admin') }}">Matières</a>
+        <a href="#">Classes</a>
+        <a href="#">Thématiques</a>
+        <a href="#">Compétences</a>
+        <a href="#">Origines</a>
+    </div>
+
+    <div class="content">
+        <div class="head-content">
+            <h2>Gestion des exercices</h2>
+            <p>Rechercher un exercice par nom, difficulté ou mot-clé: </p>
+            <div class="search-content">
+                <form class='search-bar' action="#" method="GET">
+                    <input type="text" name="_content">
+                    <button>Rechercher</button>
+                </form>
+                <a href="{{ path('soumettre') }}">
+                    Ajouter 
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.5 11V5H13.5V11H19.5V13H13.5V19H11.5V13H5.5V11H11.5Z" fill="white"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Difficulté</th>
+                    <th>Mot clé</th>
+                    <th>Durée</th>
+                    <th>Fichiers</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for exercise in exercises %}
+                    <tr>
+                        <td>{{exercise.name}}</td>
+                        <td>{{exercise.difficulty}}</td>
+                        <td>{{ exercise.keywords|replace({';': ' '}) }}</td>
+                        <td>{{exercise.duration}}</td>
+                        <td>
+                            <a href="{{ exercise.getExerciseFile().getName() }}.{{ exercise.getExerciseFile().getExtension() }}">
+                                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.38594 6.49999H9.4912L6.68419 9.02631L3.87718 6.49999H5.98244V3.97368H7.38594V6.49999ZM8.78945 1.44736H1.77191V11.5526H11.5965V3.97368H8.78945V1.44736ZM0.368408 0.81073C0.368408 0.464625 0.682092 0.184204 1.06946 0.184204H9.4912L13 3.3421V12.1798C13.0006 12.2627 12.9831 12.345 12.9484 12.4218C12.9138 12.4987 12.8626 12.5686 12.7979 12.6277C12.7332 12.6867 12.6562 12.7337 12.5713 12.766C12.4864 12.7983 12.3953 12.8152 12.3031 12.8158H1.06525C0.880954 12.8146 0.70456 12.7483 0.574175 12.631C0.443789 12.5138 0.369878 12.3551 0.368408 12.1893V0.81073Z" fill="#03053D"/>
+                                </svg>
+                                <p>Exercice</p>
+                            </a>
+                            <a href="{{ exercise.getCorrectionFile().getName() }}.{{ exercise.getCorrectionFile().getExtension() }}">
+                                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.38594 6.49999H9.4912L6.68419 9.02631L3.87718 6.49999H5.98244V3.97368H7.38594V6.49999ZM8.78945 1.44736H1.77191V11.5526H11.5965V3.97368H8.78945V1.44736ZM0.368408 0.81073C0.368408 0.464625 0.682092 0.184204 1.06946 0.184204H9.4912L13 3.3421V12.1798C13.0006 12.2627 12.9831 12.345 12.9484 12.4218C12.9138 12.4987 12.8626 12.5686 12.7979 12.6277C12.7332 12.6867 12.6562 12.7337 12.5713 12.766C12.4864 12.7983 12.3953 12.8152 12.3031 12.8158H1.06525C0.880954 12.8146 0.70456 12.7483 0.574175 12.631C0.443789 12.5138 0.369878 12.3551 0.368408 12.1893V0.81073Z" fill="#03053D"/>
+                                </svg>
+                                <p>Corrigé</p>
+                            </a>
+                        </td>
+                        <td class="action">
+                            <a href="{{ path('app_exercice_admin_edit', {'id': exercise.id}) }}">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.266 0.875098L9.68262 2.45843H1.95833V13.5418H13.0417V5.81747L14.625 4.23414V14.3334C14.625 14.5434 14.5416 14.7448 14.3931 14.8932C14.2447 15.0417 14.0433 15.1251 13.8333 15.1251H1.16667C0.956704 15.1251 0.75534 15.0417 0.606874 14.8932C0.458407 14.7448 0.375 14.5434 0.375 14.3334V1.66676C0.375 1.4568 0.458407 1.25544 0.606874 1.10697C0.75534 0.958505 0.956704 0.875098 1.16667 0.875098H11.266ZM14.2173 0.162598L15.3375 1.2836L8.0605 8.5606L6.94267 8.56297L6.94108 7.44118L14.2173 0.162598Z" fill="#757575"/>
+                                </svg>
+                                Modifier
+                            </a>
+                            {{ include('exercice_admin/_delete_form.html.twig') }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

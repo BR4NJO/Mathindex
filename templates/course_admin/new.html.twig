@@ -4,18 +4,18 @@
     <link rel="stylesheet" href="{{asset('css/backoffice/new.css')}}">
 {% endblock %}
 
-{% block title %}New User{% endblock %}
+{% block title %}New Course{% endblock %}
 
 {% block body %}
     <h1>Administration</h1>
 
     <div class="content">
-        <h2>Ajouter un contributeur</h2>
+        <h2>Ajouter une matière</h2>
 
-        {{ include('user/_form.html.twig') }}
+        {{ include('course_admin/_form.html.twig') }}
 
 
-        <a href="{{ path('app_user_index') }}">revenir à la liste</a>
+        <a href="{{ path('app_course_admin') }}">revenir à la liste</a>
 
     </div>
 {% endblock %}

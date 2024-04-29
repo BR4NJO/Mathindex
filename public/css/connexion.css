@@ -7,7 +7,7 @@
 }
 
 .messageBox {
-  margin: 2rem;
+  margin: 1rem;
 
 }
 
@@ -40,7 +40,7 @@
 }
 
 .connexion_verification{
-  margin-top: 1rem;
+  display: flex;
 }
 
 .btn_connexion {

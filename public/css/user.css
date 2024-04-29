@@ -1,0 +1,86 @@
+/* Styles pour le contenu principal */
+.content {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .head-content {
+    width: 50%;
+  }
+  
+  .head-content h2 {
+    font-size: 22px;
+  }
+  
+  .head-content p {
+    color: #666666;
+  }
+  
+  .search-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3%;
+  }
+  
+  .search-bar input[type=text] {
+    width: 70%;
+    padding: 5px;
+    border: 2px solid #F6F6F6;
+    border-radius: 8px;
+  }
+  
+  .search-bar button {
+    padding: 5px 10px;
+    background-color: #F6F6F6;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: 0.2s;
+  }
+  
+  .search-bar button:hover {
+    border: 2px solid #000;
+  }
+  
+  /* Styles pour la table */
+  .table {
+    width: 100%;
+    margin-top: 3%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    border: 2px solid #F6F6F6;
+    padding: 8px;
+  }
+  
+  .table th {
+    background-color: #F6F6F6;
+    color: #000;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .table td {
+    background-color: #FFF;
+    color: #666666;
+  }
+  
+  .table td.action {
+    text-align: center;
+  }
+  
+  .table td.action a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #F6F6F6;
+    color: #757575;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: 0.2s;
+  }
+  
+  .table td.action a:hover {
+    border: 2px solid #000;
+  }
+  

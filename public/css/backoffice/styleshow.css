@@ -1,41 +1,140 @@
+/* Styles pour le contenu principal */
+.content {
+  display: flex;
+  flex-direction: column; /* Modification pour afficher les éléments en colonne */
+  align-items: center; /* Centrer les éléments horizontalement */
+}
+
+.button-line {
+  display: flex; /* Pour aligner les boutons horizontalement */
+  justify-content: center; /* Pour centrer les boutons horizontalement */
+  width: 90%;
+}
+
+.button-line a {
+  margin: 0 10px;
+  background: #1B3168 80%;
+  height: 2rem;
+  justify-content: center;
+  display: flex;
+  border-radius: 5px;
+  color: white;
+  align-items: center;
+
+
+}
+
+.button-line a:hover{
+  background: #1B3168;
+}
+
+.head-content h2 {
+  font-size: 22px;
+}
+
+.head-content p {
+  color: #666666;
+}
+
 .search-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 3%;
   margin-bottom: 1%;
 }
-.search-content a {
-  height: 5vh;
-  width: 10%;
-  background-color: #52B788;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #F1F1F1;
+
+/* Ajoutez une classe aux éléments enfants que vous souhaitez espacer */
+.search-content .search-bar {
+  margin-right: 10px; /* Ajustez la marge comme vous le souhaitez */
 }
+
 
 .search-bar {
   width: 80%;
   height: 5vh;
   border-radius: 25px;
   outline: none;
-}
-.search-bar button {
-  width: 15%;
-  height: 100%;
-}
-.search-bar input {
-  width: 75%;
-  height: 100%;
-}
-
-.action {
-  display: flex;
-  justify-content: space-around;
-}
-.action a {
-  width: -moz-fit-content;
-  width: fit-content;
   display: flex;
   align-items: center;
-}/*# sourceMappingURL=styleshow.css.map */
+}
+
+.search-bar input[type=text] {
+  width: 35vw;
+  height: 100%;
+  padding: 5px;
+  border: 2px solid #F6F6F6;
+  border-radius: 8px;
+}
+
+.search-bar button {
+  height: 100%;
+  padding: 5px 10px;
+  background-color: #F6F6F6;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: 0.2s;
+  margin-left: 1rem;
+}
+
+.search-bar button:hover {
+  border: 2px solid #000;
+}
+
+.search-content a {
+  height: 5vh;
+  width: 13vw;
+  border-radius: 4px;
+  background-color: #52B788;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F1F1F1;
+  margin-left: 10px;
+}
+
+/* Styles pour la table */
+.table {
+  width: 100%;
+  margin-top: 3%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  border: 2px solid #F6F6F6;
+  padding: 8px;
+}
+
+.table th {
+  background-color: #F6F6F6;
+  color: #000;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table td {
+  background-color: #FFF;
+  color: #666666;
+}
+
+.table td.action {
+  text-align: center;
+}
+
+.table td.action a {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #F6F6F6;
+  color: #757575;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: 0.2s;
+}
+
+.table td.action a:hover {
+  border: 2px solid #000;
+}
+
+
+/********************************************PARTIE AJOUT*****************************************************/
+

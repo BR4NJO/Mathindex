@@ -8,6 +8,15 @@
 
 {% block body %}
     <h1>Administration</h1>
+    <div class="button-line">
+        <a href="{{ path('app_user_index') }}">Contributeurs</a>
+        <a href="{{ path('app_exercice_admin') }}">Exercices</a>
+        <a href="{{ path('app_course_admin') }}">Matières</a>
+        <a href="#">Classes</a>
+        <a href="#">Thématiques</a>
+        <a href="#">Compétences</a>
+        <a href="#">Origines</a>
+    </div>
     <div class="content">
         <div class="head-content">
             <h2>Gestion des contributeurs</h2>
@@ -29,20 +38,20 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Email</th>
-                    <th>Nom</th>
                     <th>Prénom</th>
+                    <th>Nom</th>
                     <th>Role</th>
+                    <th>Email</th>
                     <th>actions</th>
                 </tr>
             </thead>
             <tbody>
             {% for user in users%}
                 <tr>
-                    <td>{{ user.email }}</td>
+                    <td>{{ user.firstName }}</td> 
                     <td>{{ user.lastName }}</td>
-                    <td>{{ user.firstName }}</td>
                     <td>{{ user.role }}</td>
+                    <td>{{ user.email }}</td>
                     <td class="action">
                         <a href="{{ path('app_user_edit', {'id': user.id}) }}">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
