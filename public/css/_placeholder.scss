@@ -25,9 +25,9 @@
     justify-content: space-around;
 }
 
-%flex-beetween{
+%flex-between{
     @extend %flex;
-    justify-content: space-between;
+    justify-content: space-between !important;
 }
 
 %flex-around-column{
@@ -36,8 +36,8 @@
     flex-direction: column;
 }
 
-%flex-beetwen-column{
-    @extend %flex-beetween;
+%flex-between-column{
+    @extend %flex-between;
     flex-direction: column;
 }
 

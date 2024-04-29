@@ -7,7 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 #[ORM\Entity(repositoryClass: ExerciseRepository::class)]
+#[Vich\Uploadable]
 class Exercise
 {
     #[ORM\Id]
@@ -16,7 +19,7 @@ class Exercise
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = "Placeholder";
+    private ?string $name;
 
     #[ORM\ManyToOne(targetEntity: Classroom::class, inversedBy: 'exercises')]
     private Classroom $classroom;
@@ -25,41 +28,41 @@ class Exercise
     private Thematic $thematic;
 
     #[ORM\Column]
-    private ?int $difficulty = 0 ;
+    private ?int $difficulty = 0;
 
     #[ORM\Column]
     private ?float $duration = 0;
 
     #[ORM\Column(length: 255)]
-    private ?string $keywords = "Placeholder";
+    private ?string $keywords;
 
-    #[ORM\OneToOne(targetEntity:File::class, inversedBy: 'exercise')]
-    private File $exercise_file;
+    #[ORM\OneToOne(cascade: ["persist"])]
+    private ?File $exercise_file = null;
 
-    #[ORM\OneToOne(targetEntity:File::class, inversedBy: 'exercise', cascade: array("persist"))]
-    private File $correction_file;
+    #[ORM\OneToOne(cascade: array("persist"))]
+    private ?File $correction_file = null;
 
     //
 
-    #[ORM\Column(length: 255)]
-    private ?string $proposed_by_type = "Placeholder";
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $proposed_by_type = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $proposed_by_first_name = "Placeholder";
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $proposed_by_first_name = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $proposed_by_last_name = "Placeholder";
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $proposed_by_last_name = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $source_name = "Placeholder";
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $source_name = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $source_information = "Placeholder";
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $source_information = null;
 
     //
 
     #[ORM\ManyToOne(targetEntity: Source::class, inversedBy: 'exercises')]
-    private Source $source;
+    private ?Source $source = null;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'exercises')]
     private User $user;
@@ -69,6 +72,10 @@ class Exercise
 
     #[ORM\Column(length: 255)]
     private ?string $chapter = null;
+
+    #[ORM\ManyToOne(inversedBy: 'exercises')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Course $Course = null;
 
     public function __construct()
     {
@@ -145,7 +152,7 @@ class Exercise
         return $this;
     }
 
-    public function getExerciseFile(): File
+    public function getExerciseFile(): ?File
     {
         return $this->exercise_file;
     }
@@ -155,7 +162,7 @@ class Exercise
         $this->exercise_file = $exercise_file;
     }
 
-    public function getCorrectionFile(): File
+    public function getCorrectionFile(): ?File
     {
         return $this->correction_file;
     }
@@ -165,12 +172,12 @@ class Exercise
         $this->correction_file = $correction_file;
     }
 
-    public function getSource(): Source
+    public function getSource(): ?Source
     {
         return $this->source;
     }
 
-    public function setSource(Source $source): void
+    public function setSource(?Source $source): void
     {
         $this->source = $source;
     }
@@ -205,7 +212,7 @@ class Exercise
         return $this->proposed_by_type;
     }
 
-    public function setProposedByType(string $proposed_by_type): static
+    public function setProposedByType(?string $proposed_by_type): static
     {
         $this->proposed_by_type = $proposed_by_type;
 
@@ -217,7 +224,7 @@ class Exercise
         return $this->proposed_by_first_name;
     }
 
-    public function setProposedByFirstName(string $proposed_by_first_name): static
+    public function setProposedByFirstName(?string $proposed_by_first_name): static
     {
         $this->proposed_by_first_name = $proposed_by_first_name;
 
@@ -229,7 +236,7 @@ class Exercise
         return $this->proposed_by_last_name;
     }
 
-    public function setProposedByLastName(string $proposed_by_last_name): static
+    public function setProposedByLastName(?string $proposed_by_last_name): static
     {
         $this->proposed_by_last_name = $proposed_by_last_name;
 
@@ -241,7 +248,7 @@ class Exercise
         return $this->source_name;
     }
 
-    public function setSourceName(string $source_name): static
+    public function setSourceName(?string $source_name): static
     {
         $this->source_name = $source_name;
 
@@ -253,7 +260,7 @@ class Exercise
         return $this->source_information;
     }
 
-    public function setSourceInformation(string $source_information): static
+    public function setSourceInformation(?string $source_information): static
     {
         $this->source_information = $source_information;
 
@@ -268,6 +275,18 @@ class Exercise
     public function setChapter(string $chapter): static
     {
         $this->chapter = $chapter;
+
+        return $this;
+    }
+
+    public function getCourse(): ?Course
+    {
+        return $this->Course;
+    }
+
+    public function setCourse(?Course $Course): static
+    {
+        $this->Course = $Course;
 
         return $this;
     }

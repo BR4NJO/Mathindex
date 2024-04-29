@@ -48,6 +48,8 @@ class ExerciseFixtures extends Fixture implements DependentFixtureInterface
 
             $exercise->setSource($this->getReference(SourceFixtures::SOURCES[array_rand(SourceFixtures::SOURCES)]));
 
+            $exercise->setCourse($this->getReference(CourseFixtures::COURSES[array_rand(CourseFixtures::COURSES)]));
+
             $exercise->setUser($this->getReference(UserFixtures::USERS[array_rand(UserFixtures::USERS)]["email"]));
 
             for ($i = 0; $i < 3; $i++) {
@@ -69,7 +71,8 @@ class ExerciseFixtures extends Fixture implements DependentFixtureInterface
             ThematicFixtures::class,
             SourceFixtures::class,
             UserFixtures::class,
-            SkillFixtures::class
+            SkillFixtures::class,
+            CourseFixtures::class
         );
     }
 }

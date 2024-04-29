@@ -1,0 +1,72 @@
+@import url(base-light.css);
+
+.mail_text {
+  text-align: left;
+  padding: 1rem;
+  font-size: 1.3rem;
+}
+
+.messageBox {
+  margin: 2rem;
+
+}
+
+.messageBox label{
+  font-size: 1.2rem;
+}
+
+.messageBox input {
+  width: 100%;
+  height: 7vh;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  text-transform: none;
+  background: none;
+  border: 0.5px solid #000;
+  border-radius: 0.5rem;
+  outline: none;
+}
+.messageBox textarea {
+  width: 100%;
+  font-size: 1.7rem;
+  text-transform: none;
+  background: none;
+  outline: none;
+}
+
+.remember{
+  margin-left: 2rem;
+}
+
+.connexion_verification{
+  margin-top: 1rem;
+}
+
+.btn_connexion {
+  margin-left: 2rem;
+  width: 20%;
+  height: 9vh;
+  color: var(--gray-modal-text);
+  background: var( --gray-light);
+  display: inline-block;
+  font-size: 1rem;
+  transition: 0.7s;
+  border: 0.5px solid #000;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.btn_connexion:hover {
+  background: var(--blue-button-active);
+  letter-spacing: 0.1rem;
+  color: var(--white);
+}
+
+
+.connexion_password{
+  cursor: pointer;
+  margin-left: 4rem;
+  font-size: 1.2rem;
+}
+
+/*# sourceMappingURL=connexion.css.map */

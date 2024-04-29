@@ -19,19 +19,12 @@ class MyExercicesController extends AbstractController
 
     use ObjsToArrayTrait;
 
-    #[Route('/myExercices', name: 'myExercices')]
+    #[Route('/mesexercices', name: 'myExercices')]
     public function myExercices(EntityManagerInterface $entity, Request $request): Response
     {
-        
-        $user = $this->getUser();
-
-        if (empty($user)){
-            throw $this->createNotFoundException();
-        }
-     
         // On récupére le nombre d'exercice étant lié au user
             $exercices = $entity->getRepository(Exercise::class)
-            ->findBy(['user' => $user]);
+            ->findBy(['user' => $this->getUser()]);
             // dd($exerciseUser);
 
         // tableau avec pagination

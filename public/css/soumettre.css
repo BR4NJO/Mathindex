@@ -1,0 +1,75 @@
+.flex {
+  display: flex;
+}
+
+.flex {
+  justify-content: space-around;
+}
+
+.flex div div {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.flex .flexright {
+  margin-top: 5%;
+}
+.flex div {
+  width: 50%;
+}
+.flex div h1 {
+  font-size: 22px;
+}
+.flex div div {
+  margin: 0 0 3% 0;
+  color: #666666;
+}
+.flex div div label {
+  margin: 2% 0 0 0;
+  font-weight: bold;
+  font-size: 14px;
+}
+.flex div div input[type=checkbox] {
+  width: 16px !important;
+}
+.flex div div input, .flex div div select {
+  font-size: 16px;
+  padding: 3%;
+  width: 180%;
+  border: 2px solid #F6F6F6;
+  border-radius: 8px;
+}
+.flex div div input option, .flex div div select option {
+  color: #666666;
+}
+.flex div .continue {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 2% 6%;
+  background-color: #F6F6F6;
+  color: #757575;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: 0.2s;
+}
+.flex div .continue:hover {
+  border: 2px solid #000;
+}
+
+.skills-container {
+  width: 150% !important;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+}
+.skills-container label, .skills-container input {
+  font-weight: normal !important;
+  flex-basis: 25%;
+  margin: 1% 0 0 0;
+}
+
+.error {
+  font-size: 12px;
+  font-weight: bold;
+  color: #FF0000;
+}/*# sourceMappingURL=soumettre.css.map */

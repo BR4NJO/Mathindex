@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset("css/soumettre.css")}}">
+{% endblock %}
+
+{% block body %}
+<h1>Soumettre</h1>
+<div class="content">
+    <form method="post" action="{{path('soumettre')}}">
+        <div class="flex">
+            <div>
+                <h1>Source</h1>
+                {% if 'either' in errors %}<span class="error">Veuillez remplir l'une des parties gauches ou droite de cette page</span>{% endif %}
+                {{ form_row(form.source) }}
+                {{ form_row(form.source_name) }}
+                {{ form_row(form.source_information) }}
+                <button class="continue">Continuer</button>
+            </div>
+
+            <div class="flexright">
+                {{ form_row(form.proposed_by_type) }}
+                {{ form_row(form.proposed_by_last_name) }}
+                {{ form_row(form.proposed_by_first_name) }}
+            </div>
+
+            {{ form_widget(form._token) }}
+            <input type="hidden" name="page" value="2"></input>
+
+            <div style="display:none;">
+                {{ form_row(form.name) }}
+                {{ form_row(form.course) }}
+                {{ form_row(form.classroom) }}
+                {{ form_row(form.thematic) }}
+                {{ form_row(form.chapter) }}
+                {{ form_row(form.skills, {'attr': {'class': 'skills-container'}}) }}
+                {{ form_row(form.keywords) }}
+                {{ form_row(form.difficulty) }}
+                {{ form_row(form.duration) }}
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
