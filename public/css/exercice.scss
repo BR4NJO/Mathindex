@@ -1,0 +1,52 @@
+form{
+    height: 15%;
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    #exercise_search_form{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        div{
+            width: 25%;
+            height: 100µ;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            button{
+                width: 60%;
+                height: 30%;
+                margin: 0 auto;
+                padding: 5px 15px;
+                min-width: fit-content;
+            }
+            input,select{
+                width: 70%;
+                padding: 13px 0;
+                outline: none;
+                border-radius: 9px;
+                margin-bottom: 6%;
+            }
+        }
+    }
+}
+
+h2{
+    margin-top: 1%;
+}
+
+table{
+    max-height: 50vh;
+    border: 1px solid red!important;
+    td:nth-child(5){
+        display: flex;
+        flex-direction: column;
+        a{
+            align-items: center;
+            display: flex;
+        }
+    }
+}

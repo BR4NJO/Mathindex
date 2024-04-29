@@ -1,8 +1,31 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset("css/home.css")}}">
+{% endblock %}
 
 {% block body %}
-<h1>Accueil</h1>
-<div class="content">
-    {{ component('Table', {'data': data, 'rendered': ['name', 'classroom', 'thematic', 'difficulty', 'duration', 'keywords', 'exercise_file'] }) }}
-</div>
+    <h1>Accueil</h1>
+    <div class="content">
+        <p>
+            Nous sommes ravis de vous accueillir sur <span>Math index</span>, la plateforme mathématique exclusive du lycée Saint-Vincent Senlis. Développée
+            avec passion pour enrichir l'expérience éducative de nos étudiants, cette ressource en ligne offre un accés simplifié à une vaste
+            bibiliotéque d'exercices mathématiques de qualité.
+        </p> 
+
+        <h2>Explorer les Avantages Spécifiques à Notre Lycée:</h2>
+        <ol>
+            <li>
+                Exercices Personnalisées: Découvrez une collection soigneusement sélectionnée d'exerices qui complètent notre programme éducatif,
+                adaptés aux niveaux et au besoins spécifiques de nos élèves.
+            </li>
+            <li>
+                Soutien Pédagogique : <span>Math index</span> sert de complément idéal à nos cours, offrant aux enseignants et aux étudiants un outil 
+                puissant pour renforcer la compréhension des concepts mathématiques enseignés en classe.
+            </li>
+            <li>
+                Collaboration Communautaire : En tant que membre de notre lycée, participez à la communauté en partageant vos propres exercices, collaborez avec 
+                d'autres enseignants et favorisez un environnement d'apprentissage collaboratif
+            </li>
+        </ol>
+    </div>
 {% endblock %}

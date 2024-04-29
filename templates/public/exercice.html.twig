@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset("css/exercice.css")}}">
+    <link rel="stylesheet" href="{{asset("css/components/Table.css")}}">
+{% endblock %}
+
+{% block body %}
+    <h1>Rechercher un exercice</h1>
+    <div class="content">
+        {{ form(form) }}
+        {% if nbExerciceTrouver > 1 %}
+            <h2>{{nbExerciceTrouver}} exercices trouvés</h2>
+        {% else %}
+            <h2>{{nbExerciceTrouver}} exercice trouvé</h2>
+        {% endif %}
+
+        {% if nbExerciceTrouver > 0 %}
+        <table>
+            <thead>
+                <td>Nom</td>
+                <td>Difficulté</td>
+                <td>Mot clée</td>
+                <td>Durée</td>
+                <td>Fichiers</td>
+            </thead>
+            <tbody>
+                {% for exercise in exercises %}
+                <tr>
+                    <td>{{exercise.name}}</td>
+                    <td>{{exercise.difficulty}}</td>
+                    <td>{{ exercise.keywords|replace({';': ' '}) }}</td>
+                    <td>{{exercise.duration}}</td>
+                    <td>
+                        <a href={{ exercise.getExerciseFile().getName() }}.{{ exercise.getExerciseFile.getExtension() }}>
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.38594 6.49999H9.4912L6.68419 9.02631L3.87718 6.49999H5.98244V3.97368H7.38594V6.49999ZM8.78945 1.44736H1.77191V11.5526H11.5965V3.97368H8.78945V1.44736ZM0.368408 0.81073C0.368408 0.464625 0.682092 0.184204 1.06946 0.184204H9.4912L13 3.3421V12.1798C13.0006 12.2627 12.9831 12.345 12.9484 12.4218C12.9138 12.4987 12.8626 12.5686 12.7979 12.6277C12.7332 12.6867 12.6562 12.7337 12.5713 12.766C12.4864 12.7983 12.3953 12.8152 12.3031 12.8158H1.06525C0.880954 12.8146 0.70456 12.7483 0.574175 12.631C0.443789 12.5138 0.369878 12.3551 0.368408 12.1893V0.81073Z" fill="#03053D"/>
+                            </svg>
+                            <p>Exercice</p>
+                        </a>
+                        <a href={{ exercise.getCorrectionFile.getName() }}.{{ exercise.getCorrectionFile.getExtension() }}>
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.38594 6.49999H9.4912L6.68419 9.02631L3.87718 6.49999H5.98244V3.97368H7.38594V6.49999ZM8.78945 1.44736H1.77191V11.5526H11.5965V3.97368H8.78945V1.44736ZM0.368408 0.81073C0.368408 0.464625 0.682092 0.184204 1.06946 0.184204H9.4912L13 3.3421V12.1798C13.0006 12.2627 12.9831 12.345 12.9484 12.4218C12.9138 12.4987 12.8626 12.5686 12.7979 12.6277C12.7332 12.6867 12.6562 12.7337 12.5713 12.766C12.4864 12.7983 12.3953 12.8152 12.3031 12.8158H1.06525C0.880954 12.8146 0.70456 12.7483 0.574175 12.631C0.443789 12.5138 0.369878 12.3551 0.368408 12.1893V0.81073Z" fill="#03053D"/>
+                            </svg>
+                            <p>Corrigé</p>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            {% if paginate == true %}
+                <div class="content-pagination">
+                    {# button de pagination #}
+                    {% if currentPage == 1 %}
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <a href="{{path('math')}}">
+                                <g opacity="0.5">
+                                <rect width="32" height="32" rx="4" fill="#919EAB"/>
+                                <path d="M19.16 11.41L14.58 16L19.16 20.59L17.75 22L11.75 16L17.75 10L19.16 11.41Z" fill="#C4CDD5"/>
+                                </g>
+                            </a>
+                        </svg>
+                    {% else %}
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <a href="{{ path('mathShow', {'id': currentPage - 1}) }}">
+                                <g opacity="0.5">
+                                <rect width="32" height="32" rx="4" fill="#919EAB"/>
+                                <path d="M19.16 11.41L14.58 16L19.16 20.59L17.75 22L11.75 16L17.75 10L19.16 11.41Z" fill="#C4CDD5"/>
+                                </g>
+                            </a>
+                        </svg>
+                    {% endif %}
+                    <ul class="container-page">
+                        <li class="actif">{{currentPage}}</li>
+                        <li><a href="{{path('mathShow',{'id': currentPage + 1}) }}">{{currentPage + 1}}</a></li>
+                        <li>...</li>
+                        <li><a href="{{ path('mathShow', {'id': countPages - 1}) }}">{{ countPages - 1 }}</a></li>
+                        <li><a href="{{ path('mathShow', {'id': countPages}) }}">{{ countPages }}</a></li>
+                    </ul>
+                    {# button de pagination #}
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <a href="{{path('mathShow',{id: currentPage + 1})}}">
+                            <rect x="0.5" y="0.5" width="31" height="31" rx="3.5" fill="white"/>
+                            <rect x="0.5" y="0.5" width="31" height="31" rx="3.5" stroke="#DFE3E8"/>
+                            <path d="M12.84 11.41L17.42 16L12.84 20.59L14.25 22L20.25 16L14.25 10L12.84 11.41Z" fill="#C4CDD5"/>
+                        </a>
+                    </svg>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}
+

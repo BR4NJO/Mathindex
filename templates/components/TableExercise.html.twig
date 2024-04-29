@@ -6,8 +6,6 @@
 <table>
     {% set headnames = {
         'name': 'Nom', 
-        'classroom': 'Niveau', 
-        'thematic': 'Thématique', 
         'difficulty': 'Difficulté',
         'duration' : 'Durée',
         'keywords' : 'Mots clés',
@@ -28,10 +26,6 @@
                 <td>{{ v }}</td>
                 {% endif %}
 
-                {% if k in ['classroom', 'thematic'] and k in rendered %}
-                <td>{{ v.getName() }}</td>
-                {% endif %}
-
                 {% if k =='difficulty' and k in rendered %}
                 <td>Niveau {{ v }}</td>
                 {% endif %}
@@ -43,7 +37,7 @@
                 {% if k =='keywords' and k in rendered %}
                 <td>
                     {% for t in v|split(';') %}
-                    <span>{{ t }}</span>
+                    <span class="keyword">{{ t }}</span>
                     {% endfor %}
                 </td>
                 {% endif %}

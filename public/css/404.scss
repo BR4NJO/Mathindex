@@ -1,0 +1,73 @@
+*,::before,::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #010101;
+    animation: 4s ease-in-out transition-color-background ;
+}
+
+p,a,h1{
+    color: #F1F1F1;
+    animation: transition-color-font 5s ease-in-out;
+}
+
+a{
+    text-decoration: none;
+}
+
+nav{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 10vh;
+    a{
+        width: 15%;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
+main{
+    height: 90vh;
+    display: flex;
+    .part-main{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .part-main:nth-child(1){
+        flex-direction: column;
+        p{
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        a{
+            margin-top: 5%;
+        }
+    }
+}
+
+@keyframes transition-color-background {
+    from{
+        background-color: #F1F1F1;
+    }
+    to{
+        background-color: #010101;
+    }
+}
+
+@keyframes transition-color-font{
+    from{
+        color: #010101;
+    }
+    to{
+        color: #F1F1F1;
+    }
+}

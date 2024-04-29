@@ -3,6 +3,7 @@ security:
         main:
             algorithm: bcrypt
             cost: 13
+        App\Entity\User: auto
 
     providers:
         user_provider:
@@ -15,15 +16,18 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            lazy: true
-            provider: user_provider
-            pattern: ^/(admin|login|logout)
+            form_login:
+                login_path: connexion
+                check_path: connexion
+            
+            remember_me:
+                secret:   '%kernel.secret%' # requis
+                lifetime: 604800 # 1 semaine en secondes
 
             logout:
-                path: /logout
-                target: login
+                path: app_logout
 
-
+                
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
 
@@ -32,4 +36,4 @@ when@dev:
         password_hashers:
             main:
                 algorithm: bcrypt
-                cost: 4
+                cost: 4 

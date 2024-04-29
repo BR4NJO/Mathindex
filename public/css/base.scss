@@ -12,13 +12,21 @@ body{
     @extend %flex;
 }
 
+
 a,p,h1,h2,h3,path{
     color: $grey;
 }
 
 a{
     text-decoration: none;
+    width: 100%;
     color: $grey;
+}
+
+.avatar{
+    img{
+        width: 24px;
+    }
 }
 
 aside{
@@ -70,8 +78,13 @@ aside{
         }
     }
     li:hover{
-        background-color: $white-bg;
-    }
+        background-color: $blanc-de-fond;
+
+        p:hover{
+            color: #1B3168;
+        }
+    } 
+    
 }
 
 #deconnexion{
@@ -127,6 +140,7 @@ aside{
     .content{
         width: 95%;
         height: 92%;
+        padding: 1% 3%;
         padding: 3%;
         border-radius: 10px;
         background-color: $white;
@@ -162,5 +176,53 @@ aside{
     }
     ul{
         @extend %list;
+    }
+}
+
+
+.file{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    a{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
+.content-pagination{
+    width: 37%;
+    height: 7%;
+    margin: 0 auto;
+    margin-bottom: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .container-page{
+        width: 75%;
+        margin: 0 2px;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        li{
+            border: 2px solid $grey-tag;
+            padding: 5px 12px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        li.actif{
+            border: 2px solid $grey;
+        }
+    }
+    svg{
+        width: 9%;
+        height: 88%;
+        cursor: pointer;
     }
 }

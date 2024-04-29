@@ -20,29 +20,29 @@ class ExerciseRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Exercise::class);
     }
+    
+    public function paginate(int $page, int $itemsPerPage): array
+    {
+        return $this->createQueryBuilder('p')
+            ->setFirstResult(($page -1) * $itemsPerPage)
+            ->setMaxResults($itemsPerPage)
+            ->getQuery()
+            ->execute();
+    }
 
-//    /**
-//     * @return Exercise[] Returns an array of Exercise objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('e.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Exercise
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function search(array $data): array
+    {
+        $queryBuilder = $this->createQueryBuilder('e')
+            ->innerJoin('e.classroom', 'c')
+            ->innerJoin('e.thematic', 't')
+            ->where('c.id = :classroomId')
+            ->andWhere('t.id = :thematicId')
+            ->andWhere('e.keywords LIKE :keywords')
+            ->setParameter('classroomId', $data['classroom'])
+            ->setParameter('thematicId', $data['thematic'])
+            ->setParameter('keywords', '%' . $data['keywords'] . '%');
+    
+        return $queryBuilder->getQuery()->getResult();
+    }
+    
 }

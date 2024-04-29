@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/mail.css')}}">
+{% endblock %}
+
+{% block body %}
+
+<div class="content-page">
+    <h1>Renouvellement Mot de Passe</h1>
+    <div class="content">
+
+        <p class="mail_text">Cet espace est dédié à la récupération de mot de passe.
+            Ce message envoyé à contact@lyceestvincent.net sera traité dans les plus bref délai. La réponse sera trasmis sur l'adresse mail que vous avez communiqué
+        </p>   
+
+        {{ form_start(formulaire, {'attr': {'class': 'your-form-class'}}) }}
+
+            <div class="messageBox">
+                {{ form_row(formulaire.email, {'attr': {'placeholder': 'Veuillez renseigner votre mail'}}) }}
+            </div>
+
+            <div class="messageBox">
+                {{ form_row(formulaire.content, {'attr': {'placeholder': 'Votre message...'}}) }}
+            </div>
+
+            <div class="connexion_verification">
+                <input type="submit" value="Envoyer" class="btn_connexion">
+            </div> 
+
+        {{ form_end(formulaire) }}
+
+    </div>
+
+</div>
+
+<script>
+    // Attendez que le document soit prêt
+    document.addEventListener("DOMContentLoaded", function() {
+        // Sélectionnez le formulaire
+        var form = document.getElementById("mailForm");
+
+        // Ajoutez un écouteur d'événement pour le soumettre
+        form.addEventListener("submit", function(event) {
+            // Empêcher le comportement de soumission par défaut du formulaire
+            event.preventDefault();
+
+            // Afficher la popup de confirmation
+            window.alert("Votre email a été envoyé avec succès !");
+
+            // Retarder la redirection de 4 secondes
+            setTimeout(function() {
+                // Redirection vers la page d'accueil
+                window.location.href = "{{ path('home') }}"; // Assurez-vous de remplacer 'homepage' par le nom de la route de votre page d'accueil
+            }, 4000); // 4 secondes (4000 millisecondes)
+        });
+    });
+</script>
+{% endblock %}
+

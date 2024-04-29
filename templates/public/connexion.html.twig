@@ -1,7 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ConnexionController!{% endblock %}
+{% block title %}Connexion{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('css/connexion.css')}}">
+{% endblock %}
+
 
 {% block body %}
-bjour
+
+<div class="content-page">
+    <h1>Connexion</h1>
+    <div class="content">
+        {# Intégration du formulaire Symfony #}
+
+            <p class="connexion_text">Cet espace est réservé aux enseignants et élèves contributuers du lycée Saint-Vincent - Senlis. 
+                Si vous n’avez pas encore de compte, veuillez effectuer votre demande directement en envoyant un email à contact@lyceestvincent.net.
+            </p>   
+
+            <form class="your-form-class" action="{{ path('connexion') }}" method="post">
+            
+                <div class="connexion_content">
+                    <div class="messageBox">
+                        <label for="username">Email:</label>
+                        <input type="text" id="_username" name="_username" value="{{ last_username }}">
+                    </div>
+                </div>
+
+                <div class="connexion_content">
+                    <div class="messageBox">
+        
+                        <label for="password">Password:</label>
+                        <input type="password" id="_password" name="_password">
+
+                    </div>
+                </div>
+        
+                {# If you want to control the URL the user is redirected to on success
+                <input type="hidden" name="_target_path" value="/account"> #}
+        
+                <div class="connexion_content">
+                    <label class="remember">
+                        <input type="checkbox" name="_remember_me" checked>
+                        Rester connecté(e)
+                    </label>
+                </div>
+
+                <div class="connexion_verification">
+                    <input type="submit" value="Connexion" class="btn_connexion">
+                    <a href="{{path('mail')}}" class="connexion_password">Mot de passe oublié ?</a>
+                </div> 
+            </form>
+        </div>
+</div>
+
+
 {% endblock %}

@@ -1,4 +1,40 @@
+table{
+    border: 3px solid #F0F0F0;
+}
+
 td {
-    border: 1px solid;
     padding: 1%;
+}
+
+tr{
+    border: 3px solid #F0F0F0;
+}
+
+tbody tr{
+    color: #7a8894;
+}
+
+td.exercisefile{
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+td.exercisefile a{
+    width: 60%;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+td.exercisefile p{
+    text-align: left;   
+}
+
+td.action a{
+    display: flex;
+    justify-content: space-around;
 }
