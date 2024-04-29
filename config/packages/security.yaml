@@ -27,9 +27,13 @@ security:
             logout:
                 path: app_logout
 
-                
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/(soumettre|mesexercices), roles: ROLE_USER }
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_CONTRIBUTOR]
+        ROLE_CONTRIBUTOR: [ROLE_USER]
 
 when@dev:
     security:
