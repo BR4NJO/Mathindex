@@ -2,14 +2,13 @@
 Projet Symfony Fin d'année BTS2 
 
 Présentation :
-La plateforme Mathindex est un site internet permettant l'accés à une banque d'exercice en ligne.
-Ce site est comprends plusieurs pages:
+la plateforme Mathindex est un site internet permettant l'accès à une banque d'exercice en ligne.
+Ce site est comprend plusieurs pages:
 - une page d'accueil
 - une page de connexion
 - une page avec tous les exercices
-- une page avec tout les exercices créer par le contributeur ou l'administrateur
-- plusieurs page d'administration
-
+- une page avec tous les exercices créés par le contributeur ou l'administrateur
+- plusieurs pages d'administration
 
 Identifiants :
 
@@ -18,28 +17,35 @@ Identifiants :
 
 Installation du projet :
 
-1. Afin d’initialiser le projet, veillez vous rendre à la racines de projet et écrire en ligne de commande :
+1. afin d’initialiser le projet, veuillez vous rendre à la racine de projet et écrire en lignes de commande :
 
 composer install
 
 
-2. Si vous avez de modifier le style du projet, veillez entrer la commande suivante :
+2. Si vous avez de modifier le style du projet, veuillez entrer la commande suivante :
 
 npm init
-npm install @symfony/stimulus-bridge
+npm Install @symfony/stimulus-bridge
 npm run watch
 
-3. Afin de créer la base de donnée et de charger les donnés de test veillez entrer c’est lignes de commandes :
+3. Afin de créer la base de données et de charger les donnés de tests veuillez entrer c’est lignes de commandes :
 
-symfony console doctrine:database:create
-symfony console doctrine:schema:update
-symfony console doctrine:fixtures:load 
+Symfony console doctrine: database: create
+Symfony console doctrine: schéma: update
+Symfony console doctrine: fixtures: load 
 (attention si vous ne voulez pas entrer les données de test, n’entrer pas la ligne ci-dessus)
 
-4. Afin de pouvoir vous rendre sur le site internet, veillez entrer :
+4. Afin de pouvoir vous rendre sur le site internet, veuillez entrer :
  
 symfony server:start
 
-aprés cela vous aurrez accés au site par le bié de ce lien :
+Après cela vous aurez accès au site par le brier de ce lien :
 
 127.0.0.1:8001
+
+
+Autheurs:
+
+- Marcus Favernay (github : marcusWeb04)
+- Dimitri Granite (github : Snekye)
+- Alexandre Brunet (github : BR4NJO)
