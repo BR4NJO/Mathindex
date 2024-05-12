@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('css/backoffice/new.css')}}">
+{% endblock %}
+
+{% block title %}New Classroom{% endblock %}
+
+{% block body %}
+    <h1>Administration</h1>
+
+    <div class="content">
+        <h2>Ajouter une classe</h2>
+
+        {{ include('classroom_admin/_form.html.twig') }}
+
+
+        <a href="{{ path('app_classroom_admin') }}">revenir à la liste</a>
+
+    </div>
+{% endblock %}

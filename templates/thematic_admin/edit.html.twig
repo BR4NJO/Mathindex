@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Course{% endblock %}
+
+{% block body %}
+    <h1>Administration</h1>
+
+    <div class="content">
+        <h2>Modifier une thématique</h2>
+
+        {{ include('thematic_admin/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+        <a href="{{ path('app_thematic_admin') }}">retour à la liste</a>
+    </div>
+{% endblock %}

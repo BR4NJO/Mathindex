@@ -76,4 +76,13 @@ class Skill
     {
         $this->exercises = new ArrayCollection();
     }
+
+     /**
+     * @return Collection|Exercise[]
+     */
+    public function getExercises(): Collection
+    {
+        return $this->exercises;
+    }
+    
 }
